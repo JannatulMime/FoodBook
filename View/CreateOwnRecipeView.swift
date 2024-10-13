@@ -9,8 +9,8 @@ import SwiftUI
 import RichTextKit
 
 struct CreateOwnRecipeView: View {
-    @State private var showingSheet: Bool = false
-    @State var detailsText : NSAttributedString = NSAttributedString()
+    //@State private var showingSheet: Bool = false
+    @State var detailsText : NSAttributedString = NSAttributedString.empty
 
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
     @State private var selectedCatagory: String = "Dessert"
@@ -20,7 +20,7 @@ struct CreateOwnRecipeView: View {
             Text("Title")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundStyle(.white)
+                .foregroundStyle(.black)
 
             TextField("", text: .constant(""),
                       prompt: Text("Enter title")
@@ -28,34 +28,23 @@ struct CreateOwnRecipeView: View {
                 .foregroundColor(.gray)
             )
             .foregroundStyle(.white)
-                .padding(.all, 10)
-                .overlay(
+             .padding(.all, 10)
+             .background(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray)
                 )
 
             
-            RichTextViewer(detailsText)
             Text("Description")
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundStyle(.white)
-
+                .foregroundStyle(.black)
+                .padding(.bottom,2)
             
-            Text("asd")
-                .font(.caption)
-                .foregroundStyle(.gray)
-                .padding(.all, 20)
-                .frame(maxWidth: .infinity)
+            RichTextFormView(placeHolder: "Details", text: $detailsText)
+               // .frame(maxHeight: 200)
+              
                 
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray)
-                        .frame(maxWidth: .infinity)
-                )
-                .onTapGesture {
-                    showingSheet.toggle()
-                }
 
             PhotoPickerView()
                 .frame(height: 200)
@@ -105,13 +94,16 @@ struct CreateOwnRecipeView: View {
             saveOption
             Spacer()
 
-        }.padding()
+        }
+        .background(Color.white)
+        .padding()
 
-            .background(Color.black)
-            .sheet(isPresented: $showingSheet) {
-                DetailsInputView(attrText: $detailsText)
-                    .presentationDetents([.large])
-            }
+           
+//            .sheet(isPresented: $showingSheet) {
+//                RichTextEditorView(text: $detailsText)
+//                    .presentationDetents([.large])
+//                   
+//            }
     }
 }
 

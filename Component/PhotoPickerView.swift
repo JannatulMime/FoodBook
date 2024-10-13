@@ -19,17 +19,15 @@ struct PhotoPickerView: View {
             matching:  .any(of: [.images, .videos]),
             photoLibrary: .shared()) {
                 ZStack (alignment: .center) {
-                    if let selectedImageData,
-                       let uiImage = UIImage(data: selectedImageData) {
+                    
+                    if selectedImageData != nil{
                         originalImageView
+                            .background(Color.red)
                     } else {
                         placeholderView
                     }
-                    
-                    
-                }
-                
-               
+                }.frame(maxWidth: .infinity)
+
             }
         
             .onChange(of: selectedItem) { newItem in
@@ -64,20 +62,22 @@ extension PhotoPickerView {
     
     var originalImageView : some View {
         
-        if let selectedImageData,
-           let uiImage = UIImage(data: selectedImageData) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-               // .frame(width: 300, height: 100)
-                .scaledToFit()
-                
-        }else{
-            Image("Rice")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .scaledToFit()
-        }
+        CustomImageView(imageData: selectedImageData)
+        //    .background(RoundedRectangle(cornerRadius: 20))
+//        if let selectedImageData,
+//           let uiImage = UIImage(data: selectedImageData) {
+//            Image(uiImage: uiImage)
+//                .resizable()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//               // .frame(width: 300, height: 100)
+//                .scaledToFit()
+//                
+//        }else{
+//            Image("Rice")
+//                .resizable()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .scaledToFit()
+//        }
         
        
     }

@@ -1,2 +1,2 @@
 # FoodBook
-Recipe app for IOS..
+Recipe app for IOS

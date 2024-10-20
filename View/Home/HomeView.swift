@@ -22,7 +22,7 @@ struct HomeView: View {
                     }
                 }
             }
-        }.background(.black)
+        }//.background(.black)
        
     }
 }

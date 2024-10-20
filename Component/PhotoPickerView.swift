@@ -27,6 +27,7 @@ struct PhotoPickerView: View {
                         placeholderView
                     }
                 }.frame(maxWidth: .infinity)
+                    .cornerRadius(20)
 
             }
         
@@ -63,7 +64,7 @@ extension PhotoPickerView {
     var originalImageView : some View {
         
         CustomImageView(imageData: selectedImageData)
-        //    .background(RoundedRectangle(cornerRadius: 20))
+       // .background(RoundedRectangle(cornerRadius: 20))
 //        if let selectedImageData,
 //           let uiImage = UIImage(data: selectedImageData) {
 //            Image(uiImage: uiImage)

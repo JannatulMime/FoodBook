@@ -8,6 +8,15 @@
 import Foundation
 import SwiftUICore
 
+
+extension String {
+    
+    func toInt() -> Int?{
+        return Int(self)
+    }
+}
+
+
 extension String{
     
     func toAttributedString() -> AttributedString {
@@ -34,4 +43,5 @@ extension String{
         }
         return NSAttributedString(string: self)
     }
+    
 }

@@ -16,9 +16,9 @@ struct Testing: View {
             //    Text("Selected: \(selectedOption)")
 
                 Menu {
-                    Button("Option 1", action: { selectedOption = "Option 1" })
+                    Button("Snacks", action: { selectedOption = "Snacks" })
                  
-                    Button("Option 2", action: { selectedOption = "Option 2" })
+                    Button("Drinks", action: { selectedOption = "Drinks" })
                     Button("Desert", action: { selectedOption = "Desert" })
                     
                 } label: {

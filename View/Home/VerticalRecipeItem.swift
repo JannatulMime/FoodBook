@@ -21,15 +21,15 @@ struct VerticalRecipeItem: View {
                     .scaledToFit()
                     .frame(width: 160, height: 200)
                     .background()
-                    .cornerRadius(8)
-                    .shadow(color: .brown, radius: 5, x: 5, y: 5)
+                    .cornerRadius(10)
+                    .shadow(color: .gray, radius: 5, x: 3, y: 5)
 
                 HStack {
                     Image(systemName: "heart")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 20, height: 20)
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(.purple)
                         .padding(.bottom, 170)
 
                 }.padding(.leading, 130)
@@ -47,14 +47,14 @@ struct VerticalRecipeItem: View {
                     .frame(width: 160, height: 200)
                     .background()
                     .cornerRadius(8)
-                    .shadow(color: .brown, radius: 5, x: 5, y: 5)
+                    .shadow(color: .gray, radius: 5, x: 3, y: 5)
 
                 HStack {
                     Image(systemName: "heart")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 20, height: 20)
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(.purple)
                         .padding(.bottom, 170)
 
                 }.padding(.leading, 130)

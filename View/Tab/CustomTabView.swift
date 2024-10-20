@@ -35,7 +35,7 @@ struct CustomTabView: View {
             }.tag(1)
             
             
-            CreateOwnRecipeView()
+            CreateRecipeView()
                 .tabItem {
                     VStack {
                         Image(systemName: "play.rectangle")

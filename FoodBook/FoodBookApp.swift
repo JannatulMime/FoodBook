@@ -13,7 +13,7 @@ struct FoodBookApp: App {
         WindowGroup {
      //      ContentView()
             //CustomTabView()
-           CreateOwnRecipeView()
+           CreateRecipeView()
          //   TestMediaPicker()
         }
     }

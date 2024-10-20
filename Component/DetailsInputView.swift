@@ -1,5 +1,5 @@
 //
-//  RichText.swift
+//  DetailsInputView.swift
 //  FoodBook
 //
 //  Created by Habibur Rahman on 8/10/24.

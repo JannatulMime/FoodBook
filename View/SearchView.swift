@@ -23,7 +23,7 @@ struct SearchView: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(color: .yellow ,radius: 5, x: 3, y: 3)
+                .shadow(color: .yellow ,radius: 3, x: 0, y: 3)
                 .padding(.horizontal, 40)
             
             Spacer()
@@ -40,7 +40,7 @@ struct SearchView: View {
 //                               .presentationDetents([.medium, .large])
 //                       }
 //            
-        }.background(.black)
+        }//.background(.black)
         //.padding(.bottom, 30)
     }
 }

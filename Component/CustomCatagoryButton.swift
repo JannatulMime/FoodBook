@@ -17,12 +17,14 @@ struct CustomCatagoryButton: View {
             HStack {
                 Text(catagory)
                 
-                    .font(.headline)
+                    .font(.footnote)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .frame(width: 100, height: 40)
-                    .background(Color.yellow.opacity(0.8))
-                    .cornerRadius(15)
+                    //.background(Color.purple.opacity(0.6))
+                    //.cornerRadius(15)
+                
+                    .WithDefaultRectangularBgModifier(bgColor: .purple.opacity(0.6), cornerRadius: 15)
                 
             }
         }

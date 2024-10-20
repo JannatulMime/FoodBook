@@ -25,7 +25,7 @@ struct BottomView: View {
             
            // Spacer()
         } .padding()
-            .background(.gray)
+            .background(.gray.opacity(0.2))
             .cornerRadius(20)
            // .ignoresSafeArea()
         //.background(Color.green)
@@ -65,7 +65,7 @@ extension BottomView {
                 Text("06")
                     .font(.system(size: 10))
                     .font(.footnote)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.gray)
                 
             }
             Spacer()
@@ -79,7 +79,7 @@ extension BottomView {
                 Text ("1 hr")
                     .font(.system(size: 10))
                     .fontWeight(.bold)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.gray)
                 
             }
         }
@@ -94,7 +94,7 @@ extension BottomView {
             
             Text("Veg chesse grilled sandwich is a quick and easy to make sandwich that is perfect for a summer lunch.")
                 .font(.system(size: 10, weight: .bold))
-                .foregroundStyle(.white)
+                .foregroundStyle(.gray)
             
         
         }
@@ -102,21 +102,27 @@ extension BottomView {
     
     var recipeReviews: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading) {
                 Text ("Reviews")
                     .font(.system(size: 15, weight: .bold))
                     .foregroundStyle(.cyan)
                 
                 Text("Cathrin James")
                     .font(.system(size: 10, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.gray)
                 
             }
             Spacer()
             
-            Text ("Rating")
-                .font(.system(size: 15, weight: .bold))
-                .foregroundStyle(.cyan)
+            VStack {
+                Text ("Rating")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundStyle(.cyan)
+                
+                Text("4.5")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundStyle(.gray)
+            }
             
               
         }

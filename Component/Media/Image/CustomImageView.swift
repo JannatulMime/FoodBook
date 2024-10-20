@@ -24,7 +24,7 @@ struct CustomImageView: View {
                     .clipped()
 
             } else {
-                Image("Rice")
+                Image("Rice1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipped()

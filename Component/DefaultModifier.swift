@@ -18,6 +18,7 @@ struct DefaultModifier: ViewModifier {
         let bgColor: Color
         let cornerRadius: CGFloat
         let shapeType: BgShapeType
+      
 
         func body(content: Content) -> some View {
             content
@@ -29,6 +30,7 @@ struct DefaultModifier: ViewModifier {
                     case .roundedRectangle:
                         RoundedRectangle(cornerRadius: cornerRadius)
                             .foregroundStyle(bgColor)
+                           
                     case .none:
                         Rectangle()
                             .foregroundStyle(.clear)

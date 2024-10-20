@@ -9,7 +9,7 @@ import RichTextKit
 import SwiftUI
 
 struct CreateRecipeView: View {
-    // @State private var showingSheet: Bool = false
+  
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
 
     @State var isSuccess: Bool = false
@@ -17,6 +17,26 @@ struct CreateRecipeView: View {
     @StateObject var vm = CreateRecipeVM()
 
     var body: some View {
+        
+        NavigationStack{
+            contentView
+                .navigationDestination(isPresented: $vm.goDetailsPage, destination: {
+                    RecipeDetailsView(recipe: vm.recipe)
+
+                })
+
+        }
+        
+        
+    }
+}
+
+#Preview {
+    CreateRecipeView()
+}
+
+extension CreateRecipeView {
+    var contentView : some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Title")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
@@ -83,12 +103,7 @@ struct CreateRecipeView: View {
         }
         .background(Color.white)
         .padding()
-
     }
-}
-
-#Preview {
-    CreateRecipeView()
 }
 
 extension CreateRecipeView {
@@ -116,7 +131,6 @@ extension CreateRecipeView {
 
     var saveOption: some View {
         HStack {
-            Spacer()
             Button {
                 vm.save()
             } label: {

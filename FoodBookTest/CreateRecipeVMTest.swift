@@ -6,21 +6,21 @@
 //
 
 import XCTest
-//@testable import FoodBook
+@testable import FoodBook
 
 final class CreateRecipeVMTest: XCTestCase {
 
-//        func test_isValidate_ReturnTrueWhenAllCompulsoryFieldsAreFilled() {
-//            let viewModel = CreateRecipeVM()
-//    
-//            viewModel.title = "Test Title"
-//            viewModel.description = "Test Description".toNsAttributedString()
-//            viewModel.ingredients = "test Ingredients"
-//            viewModel.category = "test category"
-//    
-//            let isValid = viewModel.isValidData()
-//    
-//            XCTAssertEqual(isValid, true)
-//        }
+        func test_isValidate_ReturnTrueWhenAllCompulsoryFieldsAreFilled() {
+            let viewModel = CreateRecipeVM()
+    
+            viewModel.title = "Test Title"
+            viewModel.description = "Test Description".toNsAttributedString()
+            viewModel.ingredients = "test Ingredients"
+            viewModel.category = "test category"
+    
+            let isValid = viewModel.isValidData()
+    
+            XCTAssertEqual(isValid, true)
+        }
 
 }

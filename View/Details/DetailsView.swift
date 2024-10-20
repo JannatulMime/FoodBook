@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct DetailsView: View {
-    @State var offset : CGFloat = 0
     var topEdge : CGFloat = 0
     var maxHeight : CGFloat = 400
     var minHeight : CGFloat = 100
     
+    @State var offset : CGFloat = 0
+    @StateObject var vm = DetailsVM()
     
     var body: some View {
         VStack  {
@@ -32,14 +33,8 @@ struct DetailsView: View {
                 .offset(y: -offset)
                 .zIndex(1)
             
-            
-            
-            
-            
-           
-           
            // Spacer()
-            BottomView()
+            bottomView
                 .zIndex(0)
             Spacer()
             
@@ -99,6 +94,11 @@ extension DetailsView {
                 .padding()
                 
         }
+    }
+    
+    var bottomView: some View {
+        
+        BottomView(getRecipe: $vm.recipeDetails)
     }
     
 }

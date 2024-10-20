@@ -9,7 +9,8 @@ import SwiftUI
 
 struct BottomView: View {
     
-    
+    @StateObject var vm = BottomVM()
+    @Binding var getRecipe: Recipe?
     
     var body: some View {
         
@@ -34,13 +35,13 @@ struct BottomView: View {
 }
 
 #Preview {
-    BottomView()
+    BottomView(getRecipe: .constant(nil))
 }
 
 extension BottomView {
     var recipeName: some View {
         HStack {
-            Text("Recipe Name")
+            Text(vm.getRecipe?.name ?? "No Data")
                 .font(.system(size: 20 , weight: .bold))
                
             Spacer()

@@ -24,23 +24,6 @@
 		F3FF0D5E2CBB7404005F7AA4 /* DefaultModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF0D5D2CBB7404005F7AA4 /* DefaultModifier.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F36A109D2CB36D5600624350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F36A10842CB36D5300624350 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F36A108B2CB36D5300624350;
-			remoteInfo = FoodBook;
-		};
-		F36A10A72CB36D5600624350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F36A10842CB36D5300624350 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F36A108B2CB36D5300624350;
-			remoteInfo = FoodBook;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7B43B5212CBC034100DD1FEB /* RichTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichTextEditorView.swift; sourceTree = "<group>"; };
 		7B43B5242CBC038F00DD1FEB /* String + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Ext.swift"; sourceTree = "<group>"; };
@@ -50,8 +33,6 @@
 		F36335232CB80F9D000FF223 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		F363F2B02CB6C06000C7DFB8 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		F36A108C2CB36D5300624350 /* FoodBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F36A109C2CB36D5600624350 /* FoodBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F36A10A62CB36D5600624350 /* FoodBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38CD9F02CBBB78B00780E30 /* PhotoPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerCoordinator.swift; sourceTree = "<group>"; };
 		F38CD9F22CBBB7EF00780E30 /* TestMediaPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMediaPicker.swift; sourceTree = "<group>"; };
 		F39CA8BC2CC3ED49004C7EF9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -96,20 +77,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F328B8C62CB5392F000A19C5 /* RichTextKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36A10992CB36D5600624350 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36A10A32CB36D5600624350 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				F36A108C2CB36D5300624350 /* FoodBook.app */,
-				F36A109C2CB36D5600624350 /* FoodBookTests.xctest */,
-				F36A10A62CB36D5600624350 /* FoodBookUITests.xctest */,
 				F3C7986E2CC4B0F7004575F0 /* FoodBookTest.xctest */,
 			);
 			name = Products;
@@ -221,46 +186,6 @@
 			productReference = F36A108C2CB36D5300624350 /* FoodBook.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F36A109B2CB36D5600624350 /* FoodBookTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F36A10B32CB36D5600624350 /* Build configuration list for PBXNativeTarget "FoodBookTests" */;
-			buildPhases = (
-				F36A10982CB36D5600624350 /* Sources */,
-				F36A10992CB36D5600624350 /* Frameworks */,
-				F36A109A2CB36D5600624350 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F36A109E2CB36D5600624350 /* PBXTargetDependency */,
-			);
-			name = FoodBookTests;
-			packageProductDependencies = (
-			);
-			productName = FoodBookTests;
-			productReference = F36A109C2CB36D5600624350 /* FoodBookTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F36A10A52CB36D5600624350 /* FoodBookUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F36A10B62CB36D5600624350 /* Build configuration list for PBXNativeTarget "FoodBookUITests" */;
-			buildPhases = (
-				F36A10A22CB36D5600624350 /* Sources */,
-				F36A10A32CB36D5600624350 /* Frameworks */,
-				F36A10A42CB36D5600624350 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F36A10A82CB36D5600624350 /* PBXTargetDependency */,
-			);
-			name = FoodBookUITests;
-			packageProductDependencies = (
-			);
-			productName = FoodBookUITests;
-			productReference = F36A10A62CB36D5600624350 /* FoodBookUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		F3C7986D2CC4B0F7004575F0 /* FoodBookTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C798722CC4B0F7004575F0 /* Build configuration list for PBXNativeTarget "FoodBookTest" */;
@@ -296,14 +221,6 @@
 					F36A108B2CB36D5300624350 = {
 						CreatedOnToolsVersion = 16.0;
 					};
-					F36A109B2CB36D5600624350 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = F36A108B2CB36D5300624350;
-					};
-					F36A10A52CB36D5600624350 = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = F36A108B2CB36D5300624350;
-					};
 					F3C7986D2CC4B0F7004575F0 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -327,8 +244,6 @@
 			projectRoot = "";
 			targets = (
 				F36A108B2CB36D5300624350 /* FoodBook */,
-				F36A109B2CB36D5600624350 /* FoodBookTests */,
-				F36A10A52CB36D5600624350 /* FoodBookUITests */,
 				F3C7986D2CC4B0F7004575F0 /* FoodBookTest */,
 			);
 		};
@@ -336,20 +251,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		F36A108A2CB36D5300624350 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36A109A2CB36D5600624350 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36A10A42CB36D5600624350 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -387,20 +288,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F36A10982CB36D5600624350 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F36A10A22CB36D5600624350 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F3C7986A2CC4B0F7004575F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,19 +296,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F36A109E2CB36D5600624350 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F36A108B2CB36D5300624350 /* FoodBook */;
-			targetProxy = F36A109D2CB36D5600624350 /* PBXContainerItemProxy */;
-		};
-		F36A10A82CB36D5600624350 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F36A108B2CB36D5300624350 /* FoodBook */;
-			targetProxy = F36A10A72CB36D5600624350 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F36A10AE2CB36D5600624350 /* Debug */ = {
@@ -599,74 +473,6 @@
 			};
 			name = Release;
 		};
-		F36A10B42CB36D5600624350 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jannatul.FoodBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoodBook";
-			};
-			name = Debug;
-		};
-		F36A10B52CB36D5600624350 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jannatul.FoodBookTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoodBook.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoodBook";
-			};
-			name = Release;
-		};
-		F36A10B72CB36D5600624350 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jannatul.FoodBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FoodBook;
-			};
-			name = Debug;
-		};
-		F36A10B82CB36D5600624350 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jannatul.FoodBookUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FoodBook;
-			};
-			name = Release;
-		};
 		F3C798732CC4B0F7004575F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -679,8 +485,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.habib.test001.FoodBookTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -696,8 +505,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.habib.test001.FoodBookTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -718,24 +530,6 @@
 			buildConfigurations = (
 				F36A10B12CB36D5600624350 /* Debug */,
 				F36A10B22CB36D5600624350 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F36A10B32CB36D5600624350 /* Build configuration list for PBXNativeTarget "FoodBookTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F36A10B42CB36D5600624350 /* Debug */,
-				F36A10B52CB36D5600624350 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F36A10B62CB36D5600624350 /* Build configuration list for PBXNativeTarget "FoodBookUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F36A10B72CB36D5600624350 /* Debug */,
-				F36A10B82CB36D5600624350 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

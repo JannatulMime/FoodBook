@@ -58,12 +58,12 @@ extension BottomView {
     var verticalItem: some View {
         HStack {
             VStack {
-                Text ("Ingredients")
+                Text (vm.getRecipe?.ingredients ?? "")
                     .font(.system(size:12))
                     .fontWeight(.bold)
                     
                 
-                Text("06")
+                Text(vm.getRecipe?.category ?? "")
                     .font(.system(size: 10))
                     .font(.footnote)
                     .foregroundStyle(.gray)
@@ -72,7 +72,7 @@ extension BottomView {
             Spacer()
             
             VStack {
-                Text ("Preparation Time -")
+                Text (vm.getRecipe?.totalTime ?? "")
                     .font(.system(size: 12))
                     .fontWeight(.bold)
                   
@@ -89,7 +89,7 @@ extension BottomView {
     
     var describeRecipe: some View {
         VStack(alignment: .leading) {
-            Text("About Recipe")
+            Text("Details")
                 .font(.system(size: 20, weight: .bold))
                 .foregroundStyle(.cyan)
             

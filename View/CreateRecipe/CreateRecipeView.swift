@@ -12,18 +12,28 @@ struct CreateRecipeView: View {
   
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
 
-    @State var isSuccess: Bool = false
+   // @State var isSuccess: Bool = false
 
     @StateObject var vm = CreateRecipeVM()
+    
+    @Environment(\.managedObjectContext) var context
 
     var body: some View {
         
         NavigationStack{
             contentView
-                .navigationDestination(isPresented: $vm.goDetailsPage, destination: {
-                    RecipeDetailsView(recipe: vm.recipe)
-
+            
+                .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
+                    RecipeListView(recipe: vm.recipe)
+                        .environment(\.managedObjectContext, self.context)
+                    
                 })
+            
+            
+//                .navigationDestination(isPresented: $vm.goDetailsPage, destination: {
+//                    RecipeDetailsView(recipe: vm.recipe, getRecipe: .constant(nil))
+//
+//                })
 
         }
         
@@ -132,7 +142,8 @@ extension CreateRecipeView {
     var saveOption: some View {
         HStack {
             Button {
-                vm.save()
+                vm.addRecipe(text: vm.title)
+                vm.goRecipeListPage = true
             } label: {
                 Text("Save")
                     .font(.headline)

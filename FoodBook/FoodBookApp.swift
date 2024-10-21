@@ -6,15 +6,20 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct FoodBookApp: App {
+    let createRecipe = CreateRecipeVM.shared
+    
     var body: some Scene {
         WindowGroup {
      //      ContentView()
             //CustomTabView()
            CreateRecipeView()
          //   TestMediaPicker()
+            
+                .environment(\.managedObjectContext, createRecipe.container.viewContext)
         }
     }
 }

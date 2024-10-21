@@ -13,7 +13,6 @@
 		F328B8C32CB53563000A19C5 /* DetailsInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328B8C22CB53563000A19C5 /* DetailsInputView.swift */; };
 		F328B8C62CB5392F000A19C5 /* RichTextKit in Frameworks */ = {isa = PBXBuildFile; productRef = F328B8C52CB5392F000A19C5 /* RichTextKit */; };
 		F35598F62CB6285C00AD9040 /* Testfordropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35598F52CB6285C00AD9040 /* Testfordropdown.swift */; };
-		F36335242CB80F9D000FF223 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36335232CB80F9D000FF223 /* Testing.swift */; };
 		F363F2B12CB6C06000C7DFB8 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F363F2B02CB6C06000C7DFB8 /* PhotoPickerView.swift */; };
 		F38CD9F12CBBB78B00780E30 /* PhotoPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38CD9F02CBBB78B00780E30 /* PhotoPickerCoordinator.swift */; };
 		F38CD9F32CBBB7EF00780E30 /* TestMediaPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38CD9F22CBBB7EF00780E30 /* TestMediaPicker.swift */; };
@@ -30,7 +29,6 @@
 		7B43B5262CBC055400DD1FEB /* RichTextFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichTextFormView.swift; sourceTree = "<group>"; };
 		F328B8C22CB53563000A19C5 /* DetailsInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInputView.swift; sourceTree = "<group>"; };
 		F35598F52CB6285C00AD9040 /* Testfordropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testfordropdown.swift; sourceTree = "<group>"; };
-		F36335232CB80F9D000FF223 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		F363F2B02CB6C06000C7DFB8 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
 		F36A108C2CB36D5300624350 /* FoodBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38CD9F02CBBB78B00780E30 /* PhotoPickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerCoordinator.swift; sourceTree = "<group>"; };
@@ -62,6 +60,21 @@
 		F36A10BE2CB371D100624350 /* View */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = View;
+			sourceTree = "<group>";
+		};
+		F3B759FA2CC689270057A71F /* Extra */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		F3B75B0A2CC6BBA20057A71F /* CoreData */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F3B75B0D2CC6BC100057A71F /* Utility */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		F3C7986F2CC4B0F7004575F0 /* FoodBookTest */ = {
@@ -112,6 +125,9 @@
 		F36A10832CB36D5300624350 = {
 			isa = PBXGroup;
 			children = (
+				F3B75B0D2CC6BC100057A71F /* Utility */,
+				F3B75B0A2CC6BBA20057A71F /* CoreData */,
+				F3B759FA2CC689270057A71F /* Extra */,
 				7B43B5282CBC066400DD1FEB /* Modifiers */,
 				7B43B5232CBC037F00DD1FEB /* Extentions */,
 				F3D3A1782CB422DF004C8345 /* Component */,
@@ -151,7 +167,6 @@
 				F35598F52CB6285C00AD9040 /* Testfordropdown.swift */,
 				F363F2B02CB6C06000C7DFB8 /* PhotoPickerView.swift */,
 				F3FF0D5D2CBB7404005F7AA4 /* DefaultModifier.swift */,
-				F36335232CB80F9D000FF223 /* Testing.swift */,
 				F3B999502CBAB4AE00D4A82D /* UploadingVideo.swift */,
 			);
 			path = Component;
@@ -177,6 +192,9 @@
 				7B43B5512CBC2ECE00DD1FEB /* Media */,
 				F36A108E2CB36D5300624350 /* FoodBook */,
 				F36A10BE2CB371D100624350 /* View */,
+				F3B759FA2CC689270057A71F /* Extra */,
+				F3B75B0A2CC6BBA20057A71F /* CoreData */,
+				F3B75B0D2CC6BC100057A71F /* Utility */,
 			);
 			name = FoodBook;
 			packageProductDependencies = (
@@ -277,7 +295,6 @@
 				7B43B5222CBC034100DD1FEB /* RichTextEditorView.swift in Sources */,
 				F3C798AA2CC53B43004575F0 /* Int+Extention.swift in Sources */,
 				F328B8C32CB53563000A19C5 /* DetailsInputView.swift in Sources */,
-				F36335242CB80F9D000FF223 /* Testing.swift in Sources */,
 				F3FF0D5E2CBB7404005F7AA4 /* DefaultModifier.swift in Sources */,
 				F39CA8BD2CC3ED49004C7EF9 /* Color.swift in Sources */,
 				F3D3A17A2CB42302004C8345 /* CustomCatagoryButton.swift in Sources */,

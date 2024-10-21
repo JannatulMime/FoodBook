@@ -20,40 +20,41 @@ class CreateRecipeVM: ObservableObject {
     
     @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString.init(string: ""), ingredients: "", totalTime: "", image: "", category: "")
     
-    
+    let manager = CoreDataManager.instance
 
-    let container: NSPersistentContainer
+  //  let container: NSPersistentContainer
     @Published var savedEntities: [RecipeEntity] = []
     
     init() {
-        container = NSPersistentContainer(name: "RecipeContainer")
-        container.loadPersistentStores { (description, error) in
-            if let error = error {
-                print("Error Loading CORE DATA. \(error)")
-            }
-        }
-        fetchRecipes()
+//        container = NSPersistentContainer(name: "RecipeContainer")
+//        container.loadPersistentStores { (description, error) in
+//            if let error = error {
+//                print("Error Loading CORE DATA. \(error)")
+//            }
+//        }
+      //  fetchRecipes()
       
     }
     
-    func fetchRecipes() {
-        let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
-        
-        do {
-            savedEntities = try container.viewContext.fetch(request)
-        } catch let error {
-            print("Error fetching, \(error)")
-        }
-    }
-    
-    func addRecipe(text: String) {
-        let newRecipe = RecipeEntity(context: container.viewContext)
-        newRecipe.name = text
-        newRecipe.category = text
-        newRecipe.ingridients = text
+//    func fetchRecipes() {
+//        let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
+//        
+//        do {
+//            savedEntities = try container.viewContext.fetch(request)
+//        } catch let error {
+//            print("Error fetching, \(error)")
+//        }
+//    }
+//    
+    func addRecipe() {
+        let newRecipe = RecipeEntity(context: manager.context)
+        newRecipe.name = title
+        newRecipe.category = category
+        newRecipe.ingridients = ingredients
        
-        saveData()
+        let isSuccessSave = manager.save()
         
+        goRecipeListPage = isSuccessSave
     }
     
 
@@ -63,12 +64,12 @@ class CreateRecipeVM: ObservableObject {
        // goDetailsPage = true
         goRecipeListPage = true
         
-        do {
-            try container.viewContext.save()
-            fetchRecipes()
-        } catch let error {
-            print("Error saving. \(error)")
-        }
+//        do {
+//            try container.viewContext.save()
+//            fetchRecipes()
+//        } catch let error {
+//            print("Error saving. \(error)")
+//        }
         
         
         // check is Valid

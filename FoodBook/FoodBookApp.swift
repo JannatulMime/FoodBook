@@ -10,16 +10,17 @@ import CoreData
 
 @main
 struct FoodBookApp: App {
-    let createRecipe = CreateRecipeVM.shared
+  //  let createRecipe = CreateRecipeVM.shared
     
     var body: some Scene {
         WindowGroup {
      //      ContentView()
             //CustomTabView()
-           CreateRecipeView()
+         //  CreateRecipeView()
+            RecipeListView()
          //   TestMediaPicker()
             
-                .environment(\.managedObjectContext, createRecipe.container.viewContext)
+              //  .environment(\.managedObjectContext, createRecipe.container.viewContext)
         }
     }
 }

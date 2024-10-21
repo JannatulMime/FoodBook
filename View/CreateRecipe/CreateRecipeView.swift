@@ -15,8 +15,7 @@ struct CreateRecipeView: View {
    // @State var isSuccess: Bool = false
 
     @StateObject var vm = CreateRecipeVM()
-    
-    @Environment(\.managedObjectContext) var context
+
 
     var body: some View {
         
@@ -24,8 +23,8 @@ struct CreateRecipeView: View {
             contentView
             
                 .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
-                    RecipeListView(recipe: vm.recipe)
-                        .environment(\.managedObjectContext, self.context)
+                    RecipeListView()
+
                     
                 })
             
@@ -142,8 +141,8 @@ extension CreateRecipeView {
     var saveOption: some View {
         HStack {
             Button {
-                vm.addRecipe(text: vm.title)
-                vm.goRecipeListPage = true
+                vm.addRecipe()
+            
             } label: {
                 Text("Save")
                     .font(.headline)

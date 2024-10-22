@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 class RecipeListVM: ObservableObject {
+    @Published var gotoDetailsPage: Bool = false
     @Published var savedEntities: [RecipeEntity] = []
     
    // @Published var getRecipe: Recipe?

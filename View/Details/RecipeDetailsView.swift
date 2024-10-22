@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RecipeDetailsView: View {
     
-    @State var recipe: Recipe
-    @StateObject var vm = RecipeDetailsVM()
+    @StateObject var vm : RecipeDetailsVM
     
-    @Binding var getRecipe: Recipe?
+    init(recipeId : String) {
+        _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
+    }
     
     var body: some View {
         VStack(spacing: 20) {
@@ -40,7 +41,9 @@ struct RecipeDetailsView: View {
 }
 
 #Preview {
-    RecipeDetailsView(recipe: Recipe(name: "Test Recipe", details: "".toNsAttributedString(), ingredients: "", totalTime: "100", image: "", category: ""), getRecipe: .constant(nil))
+    RecipeDetailsView(recipeId: "")
+    
+    /*recipe: Recipe(name: "Test Recipe", details: "".toNsAttributedString(), ingredients: "", totalTime: "100", image: "", category: ""), getRecipe: .constant(nil)*/
 }
 
 

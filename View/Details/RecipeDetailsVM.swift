@@ -6,40 +6,33 @@
 //
 
 import Foundation
-//import CoreData
 
 class RecipeDetailsVM: ObservableObject {
     @Published var getRecipe: Recipe?
     
-//    let container: NSPersistentContainer
-//    @Published var savedEntities: [RecipeEntity] = []
-//    
-//    init() {
-//        container = NSPersistentContainer(name: "RecipeContainer")
-//        container.loadPersistentStores { (description, error) in
-//            if let error = error {
-//                print("Error Loading CORE DATA. \(error)")
-//            }
-//        }
-//      
-//    }
-//    
-//    func fetchRecipes() {
-//        let request = NSFetchRequest<RecipeEntity>(entityName: "RecipeEntity")
-//        
+    
+    init(recipeId : String){
+        print("Received rcipe id  : \(recipeId)")
+        fetchRecipe(from: recipeId)
+    }
+    
+    private func fetchRecipe(from id: String){
+        
+    }
+    
+//    private func getRecordEntityFromId(id: String) -> RecordEntity? {
+//        let request = RecordEntity.fetchRequest() // (entityName: Constants.CORE_DATA.RecordEntity)
+//        let idPredicate = NSPredicate( format: "id = %@", id)
+//        request.predicate = idPredicate
 //        do {
-//            savedEntities = try container.viewContext.fetch(request)
-//        } catch let error {
-//            print("Error fetching, \(error)")
+//            let datas = try manager.context.fetch(request)
+//            return datas.first
+//
+//        } catch {
+//            print("Error Fetching.. \(error.localizedDescription)")
 //        }
+//
+//        return nil
 //    }
-//    
-//    func saveData() {
-//        do {
-//            try container.viewContext.save()
-//            fetchRecipes()
-//        } catch let error {
-//            print("Error saving. \(error)")
-//        }
-//    }
+
 }

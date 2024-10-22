@@ -15,6 +15,7 @@ struct Recipe {
     var totalTime : String
     var image : String
     var category : String
+    var id: String = UUID().uuidString
     
     func getFormatedDuration() -> String {
         guard let timeInInt = totalTime.toInt() else{

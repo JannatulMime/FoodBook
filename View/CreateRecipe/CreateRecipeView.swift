@@ -142,7 +142,7 @@ extension CreateRecipeView {
         HStack {
             Button {
                 vm.addRecipe()
-            
+                
             } label: {
                 Text("Save")
                     .font(.headline)

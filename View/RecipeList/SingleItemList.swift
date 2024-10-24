@@ -47,7 +47,7 @@ struct SingleItemList: View {
             
         }
         .padding()
-        .WithDefaultRectangularBgModifier(bgColor: .green, cornerRadius: 10)
+        .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.5), cornerRadius: 10)
             .padding(.horizontal)
         
     }

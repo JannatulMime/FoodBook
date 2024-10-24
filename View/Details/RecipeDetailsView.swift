@@ -24,7 +24,7 @@ struct RecipeDetailsView: View {
                      alignment: .top
             )
             
-            VStack {
+            VStack(spacing: 15) {
                 recipeName
                 
                 verticalItem
@@ -50,21 +50,27 @@ struct RecipeDetailsView: View {
 extension RecipeDetailsView {
     var overlayView: some View {
         
-        HStack{
+        HStack {
             
             Image(systemName: "chevron.left")
                 .foregroundStyle(.orange)
-                .padding()
+               // .padding()
 //                .onTapGesture {
 //                    self.presentationMode.wrappedValue.dismiss()
 //                }
                 //.padding(.top, 5)
             
-            
             Spacer()
             
+            Image(systemName: "heart.fill")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 20, height: 20)
+                .foregroundStyle(.orange)
             
-        }
+            
+        }.padding(.horizontal, 20)
+            .padding(.top, 10)
         
     }
     
@@ -87,16 +93,21 @@ extension RecipeDetailsView {
     
     var recipeName: some View {
         HStack {
-            Text(vm.getRecipe?.name ?? "No Data")
+            Text(vm.recipe?.name ?? "No Data")
                 .font(.system(size: 20 , weight: .bold))
                
             Spacer()
             
-            Image(systemName: "heart.fill")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 20, height: 20)
-               
+            VStack {
+                Text ("Duration")
+                    .font(.system(size: 10))
+                    .fontWeight(.bold)
+                
+                Text (vm.recipe?.totalTime ?? "No time")
+                    .font(.system(size: 8))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.gray)
+            }
             
         } .foregroundStyle(.cyan)
     }
@@ -104,31 +115,30 @@ extension RecipeDetailsView {
     var verticalItem: some View {
         HStack {
             VStack {
-                Text (vm.getRecipe?.ingredients ?? "")
-                    .font(.system(size:12))
-                    .fontWeight(.bold)
-                    
-                
-                Text(vm.getRecipe?.category ?? "")
+                Text("Ingredients")
                     .font(.system(size: 10))
-                    .font(.footnote)
-                    .foregroundStyle(.gray)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.cyan)
                 
+                Text (vm.recipe?.ingredients ?? "No data")
+                    .font(.system(size: 8))
+                   
             }
+            
             Spacer()
             
-            VStack {
-                Text (vm.getRecipe?.totalTime ?? "")
-                    .font(.system(size: 12))
-                    .fontWeight(.bold)
-                  
-                
-                Text ("1 hr")
-                    .font(.system(size: 10))
-                    .fontWeight(.bold)
-                    .foregroundStyle(.gray)
-                
-            }
+                VStack {
+                    
+                    Text("Catagory")
+                        .font(.system(size: 10))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.cyan)
+                    
+                    Text(vm.recipe?.category ?? "No data")
+                        .font(.system(size: 8))
+                       
+                }
+           
         }
            
         }
@@ -151,11 +161,11 @@ extension RecipeDetailsView {
         HStack {
             VStack(alignment: .leading) {
                 Text ("Reviews")
-                    .font(.system(size: 15, weight: .bold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(.cyan)
                 
                 Text("Cathrin James")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 8, weight: .bold))
                     .foregroundStyle(.gray)
                 
             }
@@ -163,11 +173,11 @@ extension RecipeDetailsView {
             
             VStack {
                 Text ("Rating")
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(.cyan)
                 
                 Text("4.5")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 8, weight: .bold))
                     .foregroundStyle(.gray)
             }
             

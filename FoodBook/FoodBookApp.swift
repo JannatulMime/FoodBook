@@ -13,11 +13,12 @@ struct FoodBookApp: App {
   //  let createRecipe = CreateRecipeVM.shared
     
     var body: some Scene {
+
         WindowGroup {
      //      ContentView()
             //CustomTabView()
-          //  CreateRecipeView()
-        RecipeListView()
+           // CreateRecipeView()
+         RecipeListView()
          //   TestMediaPicker()
             
               //  .environment(\.managedObjectContext, createRecipe.container.viewContext)

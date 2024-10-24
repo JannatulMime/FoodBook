@@ -13,7 +13,7 @@ struct Recipe : Identifiable {
     var details : NSAttributedString
     var ingredients : String
     var totalTime : String
-    var image : String
+    var image : String?
     var category : String
     var id: String = UUID().uuidString
     

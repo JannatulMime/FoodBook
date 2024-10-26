@@ -10,6 +10,8 @@ import SwiftUI
 struct RecipeDetailsView: View {
     
     @StateObject var vm : RecipeDetailsVM
+    @Environment(\.presentationMode) var presentationMode
+
     
     init(recipeId : String) {
         _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
@@ -36,8 +38,22 @@ struct RecipeDetailsView: View {
                
             }.padding(.horizontal)
             Spacer()
+        }.background(Color.black)
+        .navigationBarBackButtonHidden(true)
+        .ignoresSafeArea()
+    }
+    
+    // Function to load an image from the app's directory
+    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: path) {
+            return UIImage(contentsOfFile: path)
+        } else {
+            print("File does not exist at path: \(path)")
+            return nil
         }
     }
+
 }
 
 #Preview {
@@ -55,10 +71,10 @@ extension RecipeDetailsView {
             Image(systemName: "chevron.left")
                 .foregroundStyle(.orange)
                // .padding()
-//                .onTapGesture {
-//                    self.presentationMode.wrappedValue.dismiss()
-//                }
-                //.padding(.top, 5)
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+               // .padding(.top, 20)
             
             Spacer()
             
@@ -70,7 +86,7 @@ extension RecipeDetailsView {
             
             
         }.padding(.horizontal, 20)
-            .padding(.top, 10)
+            .padding(.top, 50)
         
     }
     
@@ -78,10 +94,20 @@ extension RecipeDetailsView {
         
         ZStack(alignment: .bottomLeading) {
             
-            Image("Rice2")
-                .resizable()
-                .frame(width: 400, height: 300)
-                .scaledToFit()
+            
+            if let path = vm.recipe?.image, let uiImage = loadImageFromDocumentsDirectory(path: path) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 400, height: 350)
+            }else{
+                Image(vm.recipe?.image ?? "Rice1")
+                    .resizable()
+                    .frame(width: 400, height: 350)
+                    .scaledToFit()
+            }
+            
+          
            
             Text("Biriyani")
                 .foregroundStyle(.orange)
@@ -90,21 +116,20 @@ extension RecipeDetailsView {
         }
     }
     
-    
     var recipeName: some View {
         HStack {
             Text(vm.recipe?.name ?? "No Data")
-                .font(.system(size: 20 , weight: .bold))
+                .font(.system(size: 25 , weight: .bold))
                
             Spacer()
             
             VStack {
                 Text ("Duration")
-                    .font(.system(size: 10))
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                 
                 Text (vm.recipe?.totalTime ?? "No time")
-                    .font(.system(size: 8))
+                    .font(.system(size: 10))
                     .fontWeight(.bold)
                     .foregroundStyle(.gray)
             }
@@ -116,12 +141,13 @@ extension RecipeDetailsView {
         HStack {
             VStack {
                 Text("Ingredients")
-                    .font(.system(size: 10))
+                    .font(.system(size: 15))
                     .fontWeight(.bold)
                     .foregroundStyle(.cyan)
                 
                 Text (vm.recipe?.ingredients ?? "No data")
-                    .font(.system(size: 8))
+                    .font(.system(size: 10))
+                    .foregroundStyle(.gray)
                    
             }
             
@@ -130,12 +156,13 @@ extension RecipeDetailsView {
                 VStack {
                     
                     Text("Catagory")
-                        .font(.system(size: 10))
+                        .font(.system(size: 15))
                         .fontWeight(.bold)
                         .foregroundStyle(.cyan)
                     
                     Text(vm.recipe?.category ?? "No data")
-                        .font(.system(size: 8))
+                        .font(.system(size: 10))
+                        .foregroundStyle(.gray)
                        
                 }
            
@@ -153,7 +180,6 @@ extension RecipeDetailsView {
                 .font(.system(size: 10, weight: .bold))
                 .foregroundStyle(.gray)
             
-        
         }
     }
     
@@ -161,11 +187,11 @@ extension RecipeDetailsView {
         HStack {
             VStack(alignment: .leading) {
                 Text ("Reviews")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
                     .foregroundStyle(.cyan)
                 
                 Text("Cathrin James")
-                    .font(.system(size: 8, weight: .bold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(.gray)
                 
             }
@@ -173,11 +199,11 @@ extension RecipeDetailsView {
             
             VStack {
                 Text ("Rating")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
                     .foregroundStyle(.cyan)
                 
                 Text("4.5")
-                    .font(.system(size: 8, weight: .bold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(.gray)
             }
             
@@ -185,7 +211,5 @@ extension RecipeDetailsView {
         }
         
     }
-    
-
     
 }

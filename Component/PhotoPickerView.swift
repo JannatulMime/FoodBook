@@ -15,9 +15,9 @@ struct PhotoPickerView: View {
 
     var body: some View {
         VStack {
-            PhotosPicker(selection: $selectedItem, matching: .images) {
+            PhotosPicker(selection: $selectedItem,  matching:  .any(of: [.images, .videos]),
+                photoLibrary: .shared()) {
                 ZStack(alignment: .center) {
-                    //
                     if selectedImageData != nil {
                         originalImageView
                             .background(Color.red)
@@ -26,6 +26,7 @@ struct PhotoPickerView: View {
                         placeholderView
                     }
                 }.frame(maxWidth: .infinity)
+                   
                     .cornerRadius(20)
             }
         }
@@ -47,33 +48,6 @@ struct PhotoPickerView: View {
 //                .frame(width: 200, height: 200)
         }
     }
-
-//        PhotosPicker (
-//
-//            selection: $selectedItem,
-//            matching:  .any(of: [.images, .videos]),
-//            photoLibrary: .shared()) {
-//                ZStack (alignment: .center) {
-//
-//                    if selectedImageData != nil{
-//                        originalImageView
-//                            .background(Color.red)
-//                    } else {
-//                        placeholderView
-//                    }
-//                }.frame(maxWidth: .infinity)
-//                    .cornerRadius(20)
-//
-//            }
-//
-//            .onChange(of: selectedItem) { newItem in
-//                Task {
-//                    // Retrieve selected asset in the form of Data
-//                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
-//                        selectedImageData = data
-//                    }
-//                }
-//            }
 }
 
 private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
@@ -129,20 +103,5 @@ extension PhotoPickerView {
 
     var originalImageView: some View {
         CustomImageView(imageData: selectedImageData)
-        // .background(RoundedRectangle(cornerRadius: 20))
-//        if let selectedImageData,
-//           let uiImage = UIImage(data: selectedImageData) {
-//            Image(uiImage: uiImage)
-//                .resizable()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//               // .frame(width: 300, height: 100)
-//                .scaledToFit()
-//
-//        }else{
-//            Image("Rice")
-//                .resizable()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .scaledToFit()
-//        }
     }
 }

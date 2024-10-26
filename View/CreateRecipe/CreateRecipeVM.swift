@@ -16,6 +16,7 @@ class CreateRecipeVM: ObservableObject {
     @Published var duration: String = ""
   //  @Published var goDetailsPage: Bool = false
     @Published var goRecipeListPage: Bool = false
+    @Published var pickedImage : Data?
 
     @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", totalTime: "", image: "", category: "")
 
@@ -23,11 +24,19 @@ class CreateRecipeVM: ObservableObject {
     @Published var savedEntities: [RecipeEntity] = []
 
     func addRecipe() {
+        
+        var imagePath = ""
+        if let imageData = pickedImage {
+            imagePath = saveImageToDocumentsDirectory(imageData: imageData) ?? ""
+        }
+        
+        
         let newRecipe = RecipeEntity(context: manager.context)
         newRecipe.name = title
         newRecipe.category = category
         newRecipe.ingridients = ingredients
         newRecipe.id = UUID().uuidString
+        newRecipe.imageUrl = URL(string: imagePath)
 
         let isSuccessSave = manager.save()
 
@@ -63,4 +72,28 @@ class CreateRecipeVM: ObservableObject {
             return true
         }
     }
+    
+    private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
+        let fileManager = FileManager.default
+        
+        // Get the URL for the app's documents directory
+        guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        
+        // Create a unique file name
+        let fileName = UUID().uuidString + ".jpg"
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        
+        do {
+            // Save the image data to the file URL
+            try imageData.write(to: fileURL)
+            print("Image saved to: \(fileURL)")
+            return fileURL.path
+        } catch {
+            print("Failed to save image: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SingleItemList: View {
-     let image: String = ""
+     let image: String
      let name: String
      let duration: String
      let ingridients: String
@@ -16,15 +16,15 @@ struct SingleItemList: View {
     var body: some View {
         
         HStack {
-            Image(image)
+           Image(image)
                 .resizable()
-                .frame(width: 50, height: 40)
+                .frame(width: 60, height: 50)
                 .cornerRadius(10)
             
             VStack(alignment: .leading) {
                 HStack {
                     Text(name)
-                        .font(.system(size: 12))
+                        .font(.system(size: 15))
                     
                     Spacer()
                     
@@ -32,27 +32,29 @@ struct SingleItemList: View {
                     
                     Image(systemName: "clock")
                         .resizable()
-                        .frame(width: 5, height: 5)
+                        .frame(width: 10, height: 10)
                         Text(duration)
-                        .font(.system(size: 8))
+                        .font(.system(size: 10))
                 }
                 
-            }
-                .foregroundStyle(.red)
+                }
+                .foregroundStyle(.cyan)
                 
                
-                Text(ingridients)
+                Text("\(ingridients) ingridients")
+                    .foregroundStyle(.gray)
                
-            }.font(.system(size: 8))
+            }.font(.system(size: 10))
+                .fontWeight(.bold)
             
         }
-        .padding()
-        .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.5), cornerRadius: 10)
+        .padding(.all, 10)
+        .WithDefaultRectangularBgModifier(bgColor: .black, cornerRadius: 10)
             .padding(.horizontal)
         
     }
 }
 
 #Preview {
-    SingleItemList(name: "Biriyani", duration: "1h 40m", ingridients: "02 ingridients")
+    SingleItemList(image: "Rice1", name: "Biriyani", duration: "1h 40m", ingridients: "02")
 }

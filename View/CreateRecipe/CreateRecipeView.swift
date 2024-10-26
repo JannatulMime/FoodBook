@@ -9,34 +9,25 @@ import RichTextKit
 import SwiftUI
 
 struct CreateRecipeView: View {
-  
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
 
-   // @State var isSuccess: Bool = false
-
+    // @State var isSuccess: Bool = false
     @StateObject var vm = CreateRecipeVM()
 
-
     var body: some View {
-        
-        NavigationStack{
+        NavigationStack {
             contentView
-            
+
                 .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
                     RecipeListView()
 
-                    
                 })
-            
-            
+
 //                .navigationDestination(isPresented: $vm.goDetailsPage, destination: {
 //                    RecipeDetailsView(recipe: vm.recipe, getRecipe: .constant(nil))
 //
 //                })
-
         }
-        
-        
     }
 }
 
@@ -45,7 +36,7 @@ struct CreateRecipeView: View {
 }
 
 extension CreateRecipeView {
-    var contentView : some View {
+    var contentView: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Title")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
@@ -69,9 +60,10 @@ extension CreateRecipeView {
             RichTextFormView(placeHolder: "Details", text: $vm.description)
             // .frame(maxHeight: 200)
 
-            PhotoPickerView()
-            //SaveImage()
+            selectImageView
+                .frame(maxWidth: .infinity)
                 .frame(height: 200)
+                .clipped()
 
             Text("Ingredients")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
@@ -127,11 +119,10 @@ extension CreateRecipeView {
             Picker("Catagory", selection: $vm.category) {
                 ForEach(catagories, id: \.self) { catagory in
                     Text(catagory)
-                       
                 }
             }.pickerStyle(MenuPickerStyle())
                 .tint(.orange)
-               
+
         }.padding(.all, 5)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
@@ -143,7 +134,7 @@ extension CreateRecipeView {
         HStack {
             Button {
                 vm.addRecipe()
-                
+
             } label: {
                 Text("Save")
                     .font(.headline)
@@ -155,8 +146,10 @@ extension CreateRecipeView {
                             .stroke(Color.gray)
                     )
             }
-
-            // Spacer()
         }
+    }
+
+    var selectImageView: some View {
+        CustomImagePicker(selectedImageData: $vm.pickedImage)
     }
 }

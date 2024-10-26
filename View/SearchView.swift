@@ -23,7 +23,7 @@ struct SearchView: View {
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(color: .yellow ,radius: 3, x: 0, y: 3)
+                .shadow(color: .gray ,radius: 3, x: 2, y: 3)
                 .padding(.horizontal, 40)
             
             Spacer()

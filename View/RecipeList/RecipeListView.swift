@@ -33,7 +33,7 @@ extension RecipeListView {
         ScrollView {
             VStack(alignment: .leading) {
                 ForEach(vm.savedEntities) { data in
-                    SingleItemList(name: data.name ?? "", duration: data.totalTime ?? "", ingridients: data.ingridients ?? "")
+                    SingleItemList(image: data.imageUrl?.absoluteString ?? "", name: data.name ?? "", duration: data.totalTime ?? "", ingridients: data.ingridients ?? "")
 
                         .onTapGesture {
                             selectedRecipeID = data.id ?? ""

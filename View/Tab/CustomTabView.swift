@@ -38,8 +38,8 @@ struct CustomTabView: View {
             CreateRecipeView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "play.rectangle")
-                        Text("My Recipe")
+                        Image(systemName: "frying.pan")
+                        Text("Recipe")
                     }
                 }.tag(2)
             

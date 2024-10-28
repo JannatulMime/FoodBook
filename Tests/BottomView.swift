@@ -72,7 +72,7 @@ extension BottomView {
             Spacer()
             
             VStack {
-                Text (vm.getRecipe?.totalTime ?? "")
+                Text (vm.getRecipe?.duration ?? "")
                     .font(.system(size: 12))
                     .fontWeight(.bold)
                   

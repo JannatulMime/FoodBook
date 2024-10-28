@@ -12,7 +12,7 @@ struct Recipe : Identifiable {
     var name : String
     var details : NSAttributedString
     var ingredients : String
-    var totalTime : String
+    var duration : String
     var image : String?
     var category : String
     var id: String = UUID().uuidString
@@ -29,7 +29,7 @@ struct Recipe : Identifiable {
 //    }
     
     func getFormatedDuration() -> String {
-        guard let timeInInt = totalTime.toInt() else{
+        guard let timeInInt = duration.toInt() else{
             return "N/A"
         }
        

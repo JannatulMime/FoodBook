@@ -21,7 +21,7 @@ class CreateRecipeVM: ObservableObject {
     @Published var alertMessage: String = ""
 
 
-    @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", totalTime: "", image: "", category: "")
+    @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", duration: "", image: "", category: "")
 
     let manager = CoreDataManager.instance
     @Published var savedEntities: [RecipeEntity] = []
@@ -38,6 +38,7 @@ class CreateRecipeVM: ObservableObject {
         newRecipe.category = category
         newRecipe.ingridients = ingredients
         newRecipe.id = UUID().uuidString
+        newRecipe.duration = duration
         newRecipe.imageUrl = URL(string: imagePath)
 
         let isSuccessSave = manager.save()
@@ -62,7 +63,7 @@ class CreateRecipeVM: ObservableObject {
     }
 
     func createRecipe() -> Recipe {
-        return Recipe(name: title, details: description, ingredients: ingredients, totalTime: duration, image: "", category: category)
+        return Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: "", category: category)
     }
 
 //    private func isValidData() -> Bool {

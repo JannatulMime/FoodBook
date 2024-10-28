@@ -133,7 +133,7 @@ extension RecipeDetailsView {
                         .resizable()
                         .frame(width: 10, height: 10)
                     
-                    Text (vm.recipe?.totalTime ?? "No time")
+                    Text (vm.recipe?.duration ?? "No time")
                         .font(.system(size: 10))
                         .fontWeight(.bold)
                         .foregroundStyle(.gray)
@@ -180,7 +180,7 @@ extension RecipeDetailsView {
     var describeRecipe: some View {
         VStack(alignment: .leading) {
             Text("Details")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: 15, weight: .bold))
                 .foregroundStyle(.orange)
             
             Text("Veg chesse grilled sandwich is a quick and easy to make sandwich that is perfect for a summer lunch.")

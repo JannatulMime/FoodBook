@@ -16,17 +16,34 @@ class RecipeDetailsVM: ObservableObject {
         fetchRecipe(from: recipeId)
     }
 
-    private func fetchRecipe(from id: String) {
+    private func getRecipeEntity(from id: String) -> RecipeEntity? {
         let request = RecipeEntity.fetchRequest()
         let idPredicate = NSPredicate(format: "id = %@", id)
         request.predicate = idPredicate
         do {
             let datas = try manager.context.fetch(request) // returns array of recipe entity
-            recipe = datas.first?.toRecipe()
+            return datas.first
 
             // print("Recipe : \(recipe?.id ?? "")")
         } catch {
             print("Error Fetching.. \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    private func fetchRecipe(from id: String) {
+        let recipeEntity = getRecipeEntity(from: id)
+        recipe = recipeEntity?.toRecipe()
+    }
+
+    public func deleteRecipe(for id: String) {
+        if let entity = getRecipeEntity(from: id) {
+            manager.context.delete(entity)
+            let isSuccess = manager.save()
+            if isSuccess {
+                print("success delete ")
+                recipe = nil
+            }
         }
     }
 }
@@ -36,7 +53,7 @@ private extension RecipeEntity {
         return Recipe(name: name ?? "",
                       details: NSAttributedString(),
                       ingredients: ingridients ?? "",
-                      totalTime: totalTime ?? "",
+                      duration: duration ?? "",
                       image: imageUrl?.absoluteString,
                       category: category ?? "",
                       id: id ?? "")

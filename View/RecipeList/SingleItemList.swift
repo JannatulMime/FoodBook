@@ -61,7 +61,7 @@ struct SingleItemList: View {
         .padding(.all, 10)
         
         .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.2), cornerRadius: 10)
-        .shadow(color: Color.green, radius: 5)
+        .shadow(color: Color.white, radius: 5, x: 5, y: 5)
             .padding(.horizontal)
             
         

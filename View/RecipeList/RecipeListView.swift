@@ -15,6 +15,7 @@ struct RecipeListView: View {
         
         NavigationStack{
             content
+               
                 .navigationDestination(isPresented: $vm.gotoDetailsPage, destination: {
                     RecipeDetailsView(recipeId: selectedRecipeID)
                 })
@@ -34,13 +35,15 @@ extension RecipeListView {
         ScrollView {
             VStack(alignment: .leading) {
                 ForEach(vm.savedEntities) { data in
-                    SingleItemList(image: data.imageUrl?.absoluteString ?? "", name: data.name ?? "", duration: data.totalTime ?? "", ingridients: data.ingridients ?? "")
+                    SingleItemList(image: data.imageUrl?.absoluteString ?? "", name: data.name ?? "", duration: data.duration ?? "", ingridients: data.ingridients ?? "")
 
                         .onTapGesture {
                             selectedRecipeID = data.id ?? ""
                             vm.gotoDetailsPage = true
                         }
+                       
                 }
+                .onDelete(perform: vm.deleteItems)
             }
         }
     }

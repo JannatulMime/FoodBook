@@ -11,9 +11,8 @@ import SwiftUI
 struct CreateRecipeView: View {
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
 
-    // @State var isSuccess: Bool = false
     @StateObject var vm = CreateRecipeVM()
-
+    
     var body: some View {
         NavigationStack {
             contentView
@@ -133,7 +132,7 @@ extension CreateRecipeView {
     var saveOption: some View {
         HStack {
             Button {
-                vm.addRecipe()
+                vm.saveData()
 
             } label: {
                 Text("Save")
@@ -147,6 +146,9 @@ extension CreateRecipeView {
                     )
             }
         }
+        .alert(isPresented: $vm.showAlert) {
+            Alert(title: Text("Invalid Input"), message: Text(vm.alertMessage), dismissButton: .default(Text("OK")))
+                    }
     }
 
     var selectImageView: some View {

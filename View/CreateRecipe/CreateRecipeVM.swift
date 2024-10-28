@@ -17,19 +17,21 @@ class CreateRecipeVM: ObservableObject {
   //  @Published var goDetailsPage: Bool = false
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage : Data?
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+
 
     @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", totalTime: "", image: "", category: "")
 
     let manager = CoreDataManager.instance
     @Published var savedEntities: [RecipeEntity] = []
 
-    func addRecipe() {
+    private func addRecipe() {
         
         var imagePath = ""
         if let imageData = pickedImage {
             imagePath = saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
-        
         
         let newRecipe = RecipeEntity(context: manager.context)
         newRecipe.name = title
@@ -48,6 +50,9 @@ class CreateRecipeVM: ObservableObject {
 
         if isValid {
             addRecipe()
+        } else {
+            showAlert = true
+           
         }
     }
 
@@ -55,17 +60,11 @@ class CreateRecipeVM: ObservableObject {
         return Recipe(name: title, details: description, ingredients: ingredients, totalTime: duration, image: "", category: category)
     }
 
-    func isValidData() -> Bool {
-//        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
-//            print(" Validation False")
-//            return false
-//        } else {
-//            print(" Validation True")
-//            return true
-//        }
-        
-        if title.isEmpty {
-            print(" Validation False")
+    private func isValidData() -> Bool {
+        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
+          //  print(" Validation False")
+            alertMessage = "Invalid input."
+            showAlert = true
             return false
         } else {
             print(" Validation True")

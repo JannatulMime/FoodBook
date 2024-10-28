@@ -108,10 +108,10 @@ extension RecipeDetailsView {
             }
             
           
-           
-            Text("Biriyani")
-                .foregroundStyle(.orange)
-                .padding()
+//           
+//            Text("Biriyani")
+//                .foregroundStyle(.orange)
+//                .padding()
                 
         }
     }
@@ -134,7 +134,7 @@ extension RecipeDetailsView {
                     .foregroundStyle(.gray)
             }
             
-        } .foregroundStyle(.cyan)
+        } .foregroundStyle(.orange)
     }
     
     var verticalItem: some View {
@@ -143,7 +143,7 @@ extension RecipeDetailsView {
                 Text("Ingredients")
                     .font(.system(size: 15))
                     .fontWeight(.bold)
-                    .foregroundStyle(.cyan)
+                    .foregroundStyle(.orange)
                 
                 Text (vm.recipe?.ingredients ?? "No data")
                     .font(.system(size: 10))
@@ -158,7 +158,7 @@ extension RecipeDetailsView {
                     Text("Catagory")
                         .font(.system(size: 15))
                         .fontWeight(.bold)
-                        .foregroundStyle(.cyan)
+                        .foregroundStyle(.orange)
                     
                     Text(vm.recipe?.category ?? "No data")
                         .font(.system(size: 10))
@@ -174,7 +174,7 @@ extension RecipeDetailsView {
         VStack(alignment: .leading) {
             Text("Details")
                 .font(.system(size: 20, weight: .bold))
-                .foregroundStyle(.cyan)
+                .foregroundStyle(.orange)
             
             Text("Veg chesse grilled sandwich is a quick and easy to make sandwich that is perfect for a summer lunch.")
                 .font(.system(size: 10, weight: .bold))
@@ -188,7 +188,7 @@ extension RecipeDetailsView {
             VStack(alignment: .leading) {
                 Text ("Reviews")
                     .font(.system(size: 15, weight: .bold))
-                    .foregroundStyle(.cyan)
+                    .foregroundStyle(.orange)
                 
                 Text("Cathrin James")
                     .font(.system(size: 10, weight: .bold))
@@ -200,7 +200,7 @@ extension RecipeDetailsView {
             VStack {
                 Text ("Rating")
                     .font(.system(size: 15, weight: .bold))
-                    .foregroundStyle(.cyan)
+                    .foregroundStyle(.orange)
                 
                 Text("4.5")
                     .font(.system(size: 10, weight: .bold))

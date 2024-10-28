@@ -16,10 +16,20 @@ struct SingleItemList: View {
     var body: some View {
         
         HStack {
-           Image(image)
+            if let uiImage = loadImageFromDocumentsDirectory(path: image) {
+                Image(uiImage: uiImage)
                 .resizable()
                 .frame(width: 60, height: 50)
                 .cornerRadius(10)
+                
+            }else{
+                Image(image)
+                    .resizable()
+                    .frame(width: 60, height: 50)
+                    .cornerRadius(10)
+                    
+            }
+            
             
             VStack(alignment: .leading) {
                 HStack {
@@ -49,9 +59,22 @@ struct SingleItemList: View {
             
         }
         .padding(.all, 10)
-        .WithDefaultRectangularBgModifier(bgColor: .black, cornerRadius: 10)
-            .padding(.horizontal)
         
+        .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.2), cornerRadius: 10)
+        .shadow(color: Color.green, radius: 5)
+            .padding(.horizontal)
+            
+        
+    }
+    
+    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: path) {
+            return UIImage(contentsOfFile: path)
+        } else {
+            print("File does not exist at path: \(path)")
+            return nil
+        }
     }
 }
 

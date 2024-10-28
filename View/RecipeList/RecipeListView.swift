@@ -20,8 +20,9 @@ struct RecipeListView: View {
                 })
         }
 
-       
     }
+    
+   
 }
 
 #Preview {

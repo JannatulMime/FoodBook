@@ -46,12 +46,17 @@ class CreateRecipeVM: ObservableObject {
     }
 
     func saveData() {
-        let isValid = isValidData()
+       // let isValid = isValidData()
 
-        if isValid {
+        let (isValid,message) = isValidDataWithTouple()
+
+        if isValid{
+            
             addRecipe()
+            
         } else {
             showAlert = true
+            alertMessage = message
            
         }
     }
@@ -60,17 +65,48 @@ class CreateRecipeVM: ObservableObject {
         return Recipe(name: title, details: description, ingredients: ingredients, totalTime: duration, image: "", category: category)
     }
 
-    private func isValidData() -> Bool {
-        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
-          //  print(" Validation False")
-            alertMessage = "Invalid input."
-            showAlert = true
-            return false
-        } else {
-            print(" Validation True")
-            return true
+//    private func isValidData() -> Bool {
+//        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
+//          //  print(" Validation False")
+//            alertMessage = "Invalid input."
+//            showAlert = true
+//            return false
+//        } else {
+//            print(" Validation True")
+//            return true
+//        }
+//    }
+    
+    private func isValidDataWithTouple() -> (Bool,String) {
+        if title.isEmpty {
+            return (false, "Please input title")
         }
+        if description.length <= 0 {
+            return (false, "Please input description")
+        }
+        if ingredients.isEmpty {
+            return (false, "Please input ingredients")
+        }
+        if category.isEmpty {
+            return (false, "Please input category")
+        }
+        if duration.isEmpty {
+            return (false, "Please input duration")
+        }
+        if pickedImage == nil {
+            return (false, "Please select an image")
+        }
+        
+//        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
+//          //  print(" Validation False")
+//           // alertMessage = "Invalid input."
+//            showAlert = true
+//            return (false, "Invalid input.")
+//        }
+//        
+        return (true,"")
     }
+    
     
     private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
         let fileManager = FileManager.default

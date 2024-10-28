@@ -38,7 +38,7 @@ struct RecipeDetailsView: View {
                
             }.padding(.horizontal)
             Spacer()
-        }.background(Color.black)
+        }.background(Color.gray.opacity(0.1))
         .navigationBarBackButtonHidden(true)
         .ignoresSafeArea()
     }
@@ -128,10 +128,17 @@ extension RecipeDetailsView {
                     .font(.system(size: 15))
                     .fontWeight(.bold)
                 
-                Text (vm.recipe?.totalTime ?? "No time")
-                    .font(.system(size: 10))
-                    .fontWeight(.bold)
-                    .foregroundStyle(.gray)
+                HStack(spacing: 5) {
+                    Image(systemName: "clock")
+                        .resizable()
+                        .frame(width: 10, height: 10)
+                    
+                    Text (vm.recipe?.totalTime ?? "No time")
+                        .font(.system(size: 10))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.gray)
+                    
+                }
             }
             
         } .foregroundStyle(.orange)

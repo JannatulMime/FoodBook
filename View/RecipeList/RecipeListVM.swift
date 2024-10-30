@@ -35,10 +35,10 @@ class RecipeListVM: ObservableObject {
         }
     }
     
-    func deleteItems(indexSet: IndexSet) {
-        guard let index = indexSet.first else { return }
-        let entity = savedEntities[index]
-        manager.context.delete(entity)
-        }
-    
+//    func deleteItems(indexSet: IndexSet) {
+//        guard let index = indexSet.first else { return }
+//        let entity = savedEntities[index]
+//        manager.context.delete(entity)
+//        }
+//    
 }

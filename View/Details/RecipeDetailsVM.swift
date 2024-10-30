@@ -8,6 +8,10 @@
 import Foundation
 
 class RecipeDetailsVM: ObservableObject {
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+    @Published var gotoCreateRecipe: Bool = false
+
     @Published var recipe: Recipe?
     let manager = CoreDataManager.instance
 
@@ -35,16 +39,46 @@ class RecipeDetailsVM: ObservableObject {
         let recipeEntity = getRecipeEntity(from: id)
         recipe = recipeEntity?.toRecipe()
     }
+    
+    func showDeleteAlert() {
+        showAlert = true
+        alertMessage = "Is Recipe Deleted"
+    }
+    
+    
+//    func updateRecipe(recipe: Recipe?) -> Bool {
+//        
+//    
+//        guard var updateEntity = getRecipeEntity(from: recipe?.id ?? "") else {
+//            return true
+//        }
+//        
+//        updateEntity.name = recipe?.name
+//        updateEntity.category = recipe?.category
+//        updateEntity.id = recipe?.id
+//        updateEntity.duration = recipe?.duration
+//        updateEntity.ingridients = recipe?.ingredients
+//      
+//        
+//        let isSuccess = manager.save()
+//        
+//        gotoCreateRecipe = isSuccess
+//        
+//        return isSuccess
+//        
+//       
+//    }
 
-    public func deleteRecipe(for id: String) {
-        if let entity = getRecipeEntity(from: id) {
+    public func deleteRecipe() -> Bool {
+        if let entity = getRecipeEntity(from: recipe?.id ?? "") {
             manager.context.delete(entity)
             let isSuccess = manager.save()
             if isSuccess {
-                print("success delete ")
-                recipe = nil
+                return true
+               
             }
         }
+       return false
     }
 }
 

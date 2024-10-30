@@ -35,9 +35,10 @@ struct VerticalRecipeItem: View {
                 }.padding(.leading, 130)
 
                 Text(title1)
-                    .font(.footnote)
-                    .foregroundStyle(.purple)
+                   
+                    .modifier(CustomTextModifier(fontSize: 10, color: .purple, weight: .bold))
                     .padding(.leading, 10)
+                
             }
 
             ZStack(alignment: .bottomLeading) {
@@ -48,7 +49,7 @@ struct VerticalRecipeItem: View {
                     .background()
                     .cornerRadius(8)
                     .shadow(color: .gray, radius: 5, x: 3, y: 5)
-
+            
                 HStack {
                     Image(systemName: "heart")
                         .resizable()
@@ -60,8 +61,7 @@ struct VerticalRecipeItem: View {
                 }.padding(.leading, 130)
 
                 Text(title2)
-                    .font(.footnote)
-                    .foregroundStyle(.purple)
+                    .modifier(CustomTextModifier(fontSize: 10, color: .purple, weight: .bold))
                     .padding(.leading, 10)
             }
 

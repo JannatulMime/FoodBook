@@ -23,7 +23,6 @@ struct RecipeListView: View {
 
     }
     
-   
 }
 
 #Preview {
@@ -43,7 +42,7 @@ extension RecipeListView {
                         }
                        
                 }
-                .onDelete(perform: vm.deleteItems)
+                //.onDelete(perform: vm.deleteItems)
             }
         }
     }

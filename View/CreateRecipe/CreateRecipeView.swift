@@ -11,7 +11,11 @@ import SwiftUI
 struct CreateRecipeView: View {
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
 
-    @StateObject var vm = CreateRecipeVM()
+    @StateObject var vm : CreateRecipeVM
+  
+    init(recipe: Recipe? = nil) {
+        _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
+    }
     
     var body: some View {
         NavigationStack {

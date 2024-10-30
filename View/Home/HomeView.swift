@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    
+    @StateObject var vm = HomeVM()
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
@@ -17,8 +17,8 @@ struct HomeView: View {
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 5) {
-                    ForEach(0..<5) { recipe in
-                        VerticalRecipeItem(title1: "Biriyani", image1: "Rice1", title2: "Chicken Fry", image2: "Chicken")
+                    ForEach(vm.savedEntities) { recipe in
+                        VerticalRecipeItem(title1: recipe.name ?? "", image1: recipe.imageUrl?.absoluteString ?? "", title2: recipe.name ?? "", image2: recipe.imageUrl?.absoluteString ?? "")
                     }
                 }
             }

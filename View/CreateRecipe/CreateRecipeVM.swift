@@ -14,18 +14,32 @@ class CreateRecipeVM: ObservableObject {
     @Published var ingredients: String = ""
     @Published var category: String = ""
     @Published var duration: String = ""
-  //  @Published var goDetailsPage: Bool = false
+
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage : Data?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
 
-
-    @Published var recipe: Recipe = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", duration: "", image: "", category: "")
+    @Published var recipe: Recipe?
+//    = Recipe(name: "", details: NSAttributedString(string: ""), ingredients: "", duration: "", image: "", category: "")
 
     let manager = CoreDataManager.instance
     @Published var savedEntities: [RecipeEntity] = []
 
+    var isEdit : Bool = false
+    
+    
+    
+    init(recipe: Recipe?) {
+        if let recipe = recipe{
+            self.recipe = recipe
+            isEdit = true
+        }
+        
+        title = recipe?.name ?? ""
+    }
+    
+    
     private func addRecipe() {
         
         var imagePath = ""

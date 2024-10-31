@@ -37,6 +37,10 @@ class CreateRecipeVM: ObservableObject {
         }
         
         title = recipe?.name ?? ""
+        description = recipe?.details ?? NSAttributedString.init(string: "")
+        ingredients = recipe?.ingredients ?? ""
+        category = recipe?.category ?? ""
+        duration = recipe?.duration ?? ""
     }
     
     
@@ -66,8 +70,13 @@ class CreateRecipeVM: ObservableObject {
         let (isValid,message) = isValidDataWithTouple()
 
         if isValid{
-            
-            addRecipe()
+          //  recipe = createRecipe()
+            if isEdit{
+                updateRecipe(recipe: recipe)
+            } else {
+                addRecipe()
+            }
+           
             
         } else {
             showAlert = true
@@ -96,9 +105,9 @@ class CreateRecipeVM: ObservableObject {
         if title.isEmpty {
             return (false, "Please input title")
         }
-        if description.length <= 0 {
-            return (false, "Please input description")
-        }
+//        if description.length <= 0 {
+//            return (false, "Please input description")
+//        }
         if ingredients.isEmpty {
             return (false, "Please input ingredients")
         }
@@ -108,9 +117,9 @@ class CreateRecipeVM: ObservableObject {
         if duration.isEmpty {
             return (false, "Please input duration")
         }
-        if pickedImage == nil {
-            return (false, "Please select an image")
-        }
+//        if pickedImage == nil {
+//            return (false, "Please select an image")
+//        }
         
 //        if title.isEmpty || description.length <= 0 || ingredients.isEmpty || category.isEmpty || duration.isEmpty {
 //          //  print(" Validation False")
@@ -144,6 +153,41 @@ class CreateRecipeVM: ObservableObject {
             print("Failed to save image: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    
+    private func getRecipeEntity(from id: String) -> RecipeEntity? {
+        let request = RecipeEntity.fetchRequest()
+        let idPredicate = NSPredicate(format: "id = %@", id)
+        request.predicate = idPredicate
+        do {
+            let datas = try manager.context.fetch(request) // returns array of recipe entity
+            return datas.first
+
+            // print("Recipe : \(recipe?.id ?? "")")
+        } catch {
+            print("Error Fetching.. \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func updateRecipe(recipe: Recipe?) -> Bool {
+        guard let updateEntity = getRecipeEntity(from: recipe?.id ?? "") else {
+            return true
+        }
+
+        updateEntity.name = title
+        updateEntity.category = category
+        updateEntity.id = recipe?.id
+        updateEntity.duration = duration
+        updateEntity.ingridients = ingredients
+        
+        let isSuccess = manager.save()
+        goRecipeListPage = isSuccess
+
+        return isSuccess
+
+
     }
 
 }

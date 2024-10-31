@@ -13,13 +13,10 @@ struct RecipeListView: View {
 
     var body: some View {
         
-        NavigationStack{
-            content
-               
-                .navigationDestination(isPresented: $vm.gotoDetailsPage, destination: {
-                    RecipeDetailsView(recipeId: selectedRecipeID)
-                })
-        }
+        content
+            .navigationDestination(isPresented: $vm.gotoDetailsPage, destination: {
+                RecipeDetailsView(recipeId: selectedRecipeID)
+            })
 
     }
     

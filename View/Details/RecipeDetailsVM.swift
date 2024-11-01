@@ -11,8 +11,10 @@ class RecipeDetailsVM: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     @Published var gotoCreateRecipe: Bool = false
+    @Published var isAddButtonPressed: Bool = false
 
     @Published var recipe: Recipe?
+    
     let manager = CoreDataManager.instance
 
     init(recipeId: String) {
@@ -45,29 +47,6 @@ class RecipeDetailsVM: ObservableObject {
         alertMessage = "Is Recipe Deleted"
     }
     
-    
-//    func updateRecipe(recipe: Recipe?) -> Bool {
-//        
-//    
-//        guard var updateEntity = getRecipeEntity(from: recipe?.id ?? "") else {
-//            return true
-//        }
-//        
-//        updateEntity.name = recipe?.name
-//        updateEntity.category = recipe?.category
-//        updateEntity.id = recipe?.id
-//        updateEntity.duration = recipe?.duration
-//        updateEntity.ingridients = recipe?.ingredients
-//      
-//        
-//        let isSuccess = manager.save()
-//        
-//        gotoCreateRecipe = isSuccess
-//        
-//        return isSuccess
-//        
-//       
-//    }
 
     public func deleteRecipe() -> Bool {
         if let entity = getRecipeEntity(from: recipe?.id ?? "") {

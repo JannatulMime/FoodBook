@@ -11,17 +11,42 @@ struct RecipeDetailsView: View {
     @StateObject var vm: RecipeDetailsVM
     @Environment(\.presentationMode) var presentationMode
 
+    let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .red, leftIconName: "chevron.left", rightIconName: "pencil")
+
     init(recipeId: String) {
         _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
     }
 
     var body: some View {
-        NavigationStack {
-            contentView
-                .navigationDestination(isPresented: $vm.gotoCreateRecipe, destination: {
-                    CreateRecipeView(recipe: vm.recipe)
-                })
+
+     //   VStack {
+               
+                contentView
+                    .overlay(
+                CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                  
+                    self.presentationMode.wrappedValue.dismiss()
+                }, onRightButtonClicked: { vm.gotoCreateRecipe = true }
+                )
+                .padding(.bottom, 250)
+                .offset(y: -250)
+           
+    )
+
+                    .overlay(
+                floatingAddButton
+                    .offset(x: 120)
+            )
+            
+       // }
+        
+        .popover(isPresented: $vm.isAddButtonPressed) {
+            CreateRecipeView(recipe: vm.recipe)
         }
+
+        .navigationDestination(isPresented: $vm.gotoCreateRecipe, destination: {
+            CreateRecipeView(recipe: vm.recipe)
+        })
     }
 
     // Function to load an image from the app's directory
@@ -44,47 +69,43 @@ struct RecipeDetailsView: View {
 
 extension RecipeDetailsView {
     var contentView: some View {
+        ScrollView {
         VStack(spacing: 20) {
-            topView
-                .overlay(
-                    overlayView,
-                    alignment: .top
-                )
+ 
+                topView
 
-            VStack(spacing: 15) {
-                recipeName
-
-                verticalItem
-
-                describeRecipe
-
-                recipeReviews
-
-                Spacer()
-                HStack {
-                    editButton
-
+                    .overlay(
+                        
+                        overlayView
+                            .offset(x: 160)
+                    )
+                
+                
+                VStack(spacing: 15) {
+                    recipeName
+                    
+                    verticalItem
+                    
+                    describeRecipe
+                    
+                    recipeReviews
+                    
                     Spacer()
-                    deleteButton
-                }.padding()
-
-            }.padding(.horizontal)
-            Spacer()
-        }.background(Color.gray.opacity(0.1))
+                    //                HStack {
+                    //                    Spacer()
+                    //                    deleteButton
+                    //                }.padding()
+                    
+                }.padding(.horizontal)
+                Spacer()
+        }}.background(Color.white)
             .navigationBarBackButtonHidden(true)
             .ignoresSafeArea()
     }
 
     var overlayView: some View {
-        HStack {
-            Image(systemName: "chevron.left")
-                .foregroundStyle(.orange)
-                // .padding()
-                .onTapGesture {
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-            // .padding(.top, 20)
-
+        VStack {
+           
             Spacer()
 
             Image(systemName: "heart.fill")
@@ -93,8 +114,8 @@ extension RecipeDetailsView {
                 .frame(width: 20, height: 20)
                 .foregroundStyle(.orange)
 
-        }.padding(.horizontal, 20)
-            .padding(.top, 50)
+                .padding()
+        }
     }
 
     var topView: some View {
@@ -210,42 +231,49 @@ extension RecipeDetailsView {
         }
     }
 
-    var deleteButton: some View {
-        Button(action: {
-            vm.showDeleteAlert()
+    var floatingAddButton: some View {
+        VStack {
+            Spacer()
 
-        }) {
-            Image(systemName: "trash")
+            Image(systemName: "plus")
                 .resizable()
-                .frame(width: 20, height: 25)
-                .foregroundColor(.red)
-        }
+                .frame(width: 30, height: 30)
+                .padding()
 
-        .alert("Is Recipe Deleted?",
-               isPresented: $vm.showAlert,
-               actions: {
-                   Button("No", role: .cancel) {
-                       //
-                   }
-
-                   Button("Yes", role: .destructive) {
-                       vm.deleteRecipe()
-                       self.presentationMode.wrappedValue.dismiss()
-                   }
-
-               })
+                .background(
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(.orange)
+                ).foregroundStyle(Color.white)
+                .onTapGesture {
+                    vm.recipe = nil
+                    vm.isAddButtonPressed = true
+                }
+        }.padding()
     }
 
-    var editButton: some View {
-        Button(action: {
-            vm.gotoCreateRecipe = true
-            //  vm.updateRecipe(recipe: vm.recipe)
-
-        }) {
-            Image(systemName: "pencil")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundColor(.blue)
-        }
-    }
+//    var deleteButton: some View {
+//        Button(action: {
+//            vm.showDeleteAlert()
+//
+//        }) {
+//            Image(systemName: "trash")
+//                .resizable()
+//                .frame(width: 20, height: 25)
+//                .foregroundColor(.red)
+//        }
+//
+//        .alert("Is Recipe Deleted?",
+//               isPresented: $vm.showAlert,
+//               actions: {
+//                   Button("No", role: .cancel) {
+//                       //
+//                   }
+//
+//                   Button("Yes", role: .destructive) {
+//                       vm.deleteRecipe()
+//                       self.presentationMode.wrappedValue.dismiss()
+//                   }
+//
+//               })
+//    }
 }

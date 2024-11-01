@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct RecipeListView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     @StateObject var vm = RecipeListVM()
     @State var selectedRecipeID: String = ""
 
+    let topBarConfig = CommonTopBarData(title: "Recipe List", bgColor: Color.red, leftIconName: "chevron.left", rightIconName: "plus.circle")
+
     var body: some View {
-        
+        CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+            self.presentationMode.wrappedValue.dismiss()
+        }, onRightButtonClicked: { vm.goToCreateRecipe = true }
+        )
+
         content
+
+            .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $vm.gotoDetailsPage, destination: {
                 RecipeDetailsView(recipeId: selectedRecipeID)
             })
 
+            .navigationDestination(isPresented: $vm.goToCreateRecipe, destination: {
+                CreateRecipeView()
+            })
     }
-    
 }
 
 #Preview {
@@ -27,7 +39,7 @@ struct RecipeListView: View {
 }
 
 extension RecipeListView {
-    var content : some View {
+    var content: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 ForEach(vm.savedEntities) { data in
@@ -37,9 +49,7 @@ extension RecipeListView {
                             selectedRecipeID = data.id ?? ""
                             vm.gotoDetailsPage = true
                         }
-                       
                 }
-                //.onDelete(perform: vm.deleteItems)
             }
         }
     }

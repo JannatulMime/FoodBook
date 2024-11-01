@@ -9,28 +9,44 @@ import RichTextKit
 import SwiftUI
 
 struct CreateRecipeView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var vm: CreateRecipeVM
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
+    let topBarConfig = CommonTopBarData(title: "Create", bgColor: Color.green, leftIconName: "chevron.left", rightIconName: "xmark.circle")
+    
+    @State var isEditng: Bool = false
+    
 
-    @StateObject var vm : CreateRecipeVM
-  
     init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
     }
     
+
     var body: some View {
-        NavigationStack {
-            contentView
-
-                .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
-                    RecipeListView()
-
-                })
-
-//                .navigationDestination(isPresented: $vm.goDetailsPage, destination: {
-//                    RecipeDetailsView(recipe: vm.recipe, getRecipe: .constant(nil))
-//
-//                })
+        if isEditng {
+            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+            },onRightButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+            )
+        } else {
+            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+            }
+            )
         }
+        
+        
+
+        contentView
+
+            .navigationBarBackButtonHidden(true)
+            .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
+                RecipeListView()
+
+            })
+
     }
 }
 
@@ -152,7 +168,7 @@ extension CreateRecipeView {
         }
         .alert(isPresented: $vm.showAlert) {
             Alert(title: Text("Invalid Input"), message: Text(vm.alertMessage), dismissButton: .default(Text("OK")))
-                    }
+        }
     }
 
     var selectImageView: some View {

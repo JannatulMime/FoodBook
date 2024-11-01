@@ -10,11 +10,13 @@ import SwiftUI
 struct RecipeDetailsView: View {
     @StateObject var vm: RecipeDetailsVM
     @Environment(\.presentationMode) var presentationMode
+   // @Binding var isEditing: Bool
 
     let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .red, leftIconName: "chevron.left", rightIconName: "pencil")
 
     init(recipeId: String) {
         _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
+       
     }
 
     var body: some View {
@@ -26,7 +28,10 @@ struct RecipeDetailsView: View {
                 CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
                   
                     self.presentationMode.wrappedValue.dismiss()
-                }, onRightButtonClicked: { vm.gotoCreateRecipe = true }
+                }, onRightButtonClicked: { vm.gotoCreateRecipe = true
+                
+                   
+                }
                 )
                 .padding(.bottom, 250)
                 .offset(y: -250)

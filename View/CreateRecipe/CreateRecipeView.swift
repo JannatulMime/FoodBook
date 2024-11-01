@@ -12,41 +12,28 @@ struct CreateRecipeView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
-    let topBarConfig = CommonTopBarData(title: "Create", bgColor: Color.green, leftIconName: "chevron.left", rightIconName: "xmark.circle")
-    
-    @State var isEditng: Bool = false
-    
+    var topBarConfig : CommonTopBarData
 
     init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
+        let isEdit = recipe != nil
+        topBarConfig = CommonTopBarData(title: isEdit ? "Edit" : "Create", bgColor: Color.green, leftIconName: "chevron.left", rightIconName: isEdit ? "xmark.circle" : "")
     }
-    
 
     var body: some View {
-        if isEditng {
-            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-                self.presentationMode.wrappedValue.dismiss()
-            },onRightButtonClicked: {
-                self.presentationMode.wrappedValue.dismiss()
-            }
-            )
-        } else {
-            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-                self.presentationMode.wrappedValue.dismiss()
-            }
-            )
-        }
         
+        CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+            self.presentationMode.wrappedValue.dismiss()
+        },onRightButtonClicked: {
+            self.presentationMode.wrappedValue.dismiss()
+    
+        })
         
-
         contentView
-
             .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
                 RecipeListView()
-
             })
-
     }
 }
 

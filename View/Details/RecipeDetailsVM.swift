@@ -12,6 +12,7 @@ class RecipeDetailsVM: ObservableObject {
     @Published var alertMessage: String = ""
     @Published var gotoCreateRecipe: Bool = false
     @Published var isAddButtonPressed: Bool = false
+    
 
     @Published var recipe: Recipe?
     

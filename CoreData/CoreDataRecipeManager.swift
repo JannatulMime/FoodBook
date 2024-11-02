@@ -10,6 +10,8 @@ import Foundation
 
 class CoreDataRecipeManager {
     
+    //
+    
     let manager = CoreDataManager.instance
 
     func addRecipe(recipe: Recipe) -> Bool {

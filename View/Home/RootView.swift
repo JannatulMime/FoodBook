@@ -11,6 +11,7 @@ struct RootView: View {
     @State var gotoHomeView: Bool = false
     @State var gotoCreateRecipeView: Bool = false
     @State var gotoRecipeListView: Bool = false
+    // var viewName: String = ""
 
     var body: some View {
         NavigationStack {
@@ -33,6 +34,15 @@ struct RootView: View {
             })
         }
     }
+//    func modifyTextsize(viewName: String) {
+//        Text(viewName)
+//        .foregroundStyle(.white)
+//        .frame(width: 300, height: 50)
+//        .padding(.horizontal, 20)
+//        .background(Color.gray.opacity(0.5))
+//        .cornerRadius(10)
+//
+//    }
 }
 
 #Preview {
@@ -45,11 +55,11 @@ extension RootView {
             gotoHomeView = true
         }) {
             Text("HomeView")
-                .foregroundStyle(.white)
-                .frame(width: 300, height: 50)
-                .padding(.horizontal, 20)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(10)
+                .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.5), cornerRadius: 10)
+                .padding(.horizontal, 30)
         }
     }
 
@@ -58,11 +68,11 @@ extension RootView {
             gotoRecipeListView = true
         }) {
             Text("ListView")
-                .foregroundStyle(.white)
-                .frame(width: 300, height: 50)
-                .padding(.horizontal, 20)
-                .background(Color.cyan)
-                .cornerRadius(10)
+                .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .WithDefaultRectangularBgModifier(bgColor: .cyan, cornerRadius: 10)
+                .padding(.horizontal, 30)
         }
     }
 
@@ -71,11 +81,12 @@ extension RootView {
             gotoCreateRecipeView = true
         }) {
             Text("CreateRecipeView")
-                .foregroundStyle(.white)
-                .frame(width: 300, height: 50)
-                .padding(.horizontal, 20)
-                .background(Color.gray.opacity(0.5))
-                .cornerRadius(10)
+
+                .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .WithDefaultRectangularBgModifier(bgColor: .gray.opacity(0.5), cornerRadius: 10)
+                .padding(.horizontal, 30)
         }
     }
 }

@@ -9,6 +9,7 @@ import RichTextKit
 import SwiftUI
 
 struct CreateRecipeView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
     var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
@@ -43,6 +44,7 @@ struct CreateRecipeView: View {
 
 extension CreateRecipeView {
     var contentView: some View {
+        
         VStack(alignment: .leading, spacing: 10) {
             Text("Title")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
@@ -53,7 +55,7 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .padding(.all, 10)
+            .padding(.all, 15)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
@@ -80,16 +82,16 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .padding(.all, 10)
+            .padding(.all, 15)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
             )
 
-            HStack {
+           
                 selectCategory
 
-                Spacer()
+    
 
                 TextField("", text: $vm.duration,
                           prompt: Text("Duration Time")
@@ -97,13 +99,15 @@ extension CreateRecipeView {
                 )
                 .font(.caption)
                 .padding()
-                .frame(width: 120, height: 40)
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+                .padding(.all, 10)
                 .foregroundStyle(.black)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray)
                 )
-            }
+            
 
             Spacer()
             saveOption
@@ -116,7 +120,7 @@ extension CreateRecipeView {
 
 extension CreateRecipeView {
     var selectCategory: some View {
-        HStack(spacing: 0) {
+        HStack() {
             Text("Category - ")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -128,12 +132,17 @@ extension CreateRecipeView {
                 }
             }.pickerStyle(MenuPickerStyle())
                 .tint(.orange)
-
-        }.padding(.all, 5)
+               
+                
+        }
+        .frame(height: 50)
+        .frame(maxWidth: .infinity)
+        .padding(.all, 10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
             )
+
     }
 
     var saveOption: some View {
@@ -143,14 +152,11 @@ extension CreateRecipeView {
 
             } label: {
                 Text("Save")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(.green)
-                    .frame(width: 100, height: 50)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray)
-                    )
+                    .frame(height: 50)
+                    .frame(maxWidth: .infinity)
+                    .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
+                    .WithDefaultRectangularBgModifier(bgColor: .green, cornerRadius: 20)
+                   // .padding(.horizontal,20)
             }
         }
         .alert(isPresented: $vm.showAlert) {

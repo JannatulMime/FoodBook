@@ -5,8 +5,6 @@
 //  Created by Habibur Rahman on 21/10/24.
 //
 
-import Foundation
-
 
 import CoreData
 import Foundation
@@ -75,6 +73,8 @@ class CoreDataManager {
             print("Failed to batch delete all records for \(entityName): \(error.localizedDescription)")
         }
     }
+    
+    
 }
 
   

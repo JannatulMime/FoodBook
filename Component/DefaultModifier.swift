@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
     enum BgShapeType {
         case none
         case circle

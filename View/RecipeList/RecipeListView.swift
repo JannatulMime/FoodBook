@@ -3,7 +3,7 @@
 //  FoodBook
 //
 //  Created by Habibur Rahman on 21/10/24.
-//
+
 
 import SwiftUI
 
@@ -42,11 +42,11 @@ extension RecipeListView {
     var content: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ForEach(vm.savedEntities) { data in
-                    SingleItemList(image: data.imageUrl?.absoluteString ?? "", name: data.name ?? "", duration: data.duration ?? "", ingridients: data.ingridients ?? "")
+                ForEach(vm.recipies) { data in
+                    SingleItemList(image: data.image ?? "", name: data.name, duration: data.duration, ingridients: data.ingredients)
 
                         .onTapGesture {
-                            selectedRecipeID = data.id ?? ""
+                            selectedRecipeID = data.id
                             vm.gotoDetailsPage = true
                         }
                 }

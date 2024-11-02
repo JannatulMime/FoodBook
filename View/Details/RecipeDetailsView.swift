@@ -12,7 +12,7 @@ struct RecipeDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
    // @Binding var isEditing: Bool
 
-    let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .red, leftIconName: "chevron.left", rightIconName: "pencil")
+    let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .white, leftIconName: "chevron.left", rightIconName: "pencil")
 
     init(recipeId: String) {
         _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
@@ -56,13 +56,20 @@ struct RecipeDetailsView: View {
 
     // Function to load an image from the app's directory
     private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: path) {
-            return UIImage(contentsOfFile: path)
-        } else {
-            print("File does not exist at path: \(path)")
-            return nil
-        }
+        
+        if let fileURL = URL(string: path),
+                 let uiImage = UIImage(contentsOfFile: fileURL.path) {
+                 //   Image(uiImage: uiImage) // Convert UIImage to SwiftUI Image
+            return uiImage
+                }
+//        let fileManager = FileManager.default
+//        if fileManager.fileExists(atPath: path) {
+//            return UIImage(contentsOfFile: path)
+//        } else {
+//            print("File does not exist at path: \(path)")
+//            return nil
+//        }
+        return nil
     }
 }
 
@@ -117,8 +124,8 @@ extension RecipeDetailsView {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 20, height: 20)
-                .foregroundStyle(.orange)
-
+                .foregroundStyle(.white)
+                .shadow(color: .yellow, radius: 3)
                 .padding()
         }
     }
@@ -131,7 +138,7 @@ extension RecipeDetailsView {
                     .scaledToFit()
                     .frame(width: 400, height: 350)
             } else {
-                Image(vm.recipe?.image ?? "Rice1")
+                Image(vm.recipe?.image ?? "effect")
                     .resizable()
                     .frame(width: 400, height: 350)
                     .scaledToFit()

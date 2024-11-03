@@ -21,7 +21,7 @@ class RecipeDetailsVM: ObservableObject {
 
     init(recipeId: String) {
         print("Received rcipe id  : \(recipeId)")
-        localRecipeStore.fetchRecipe(from: recipeId)
+        recipe = localRecipeStore.fetchRecipe(from: recipeId)
     }
     
     func showDeleteAlert() {

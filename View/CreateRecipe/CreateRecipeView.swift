@@ -55,7 +55,9 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .padding(.all, 15)
+            .frame(height: 20)
+            .padding()
+            
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
@@ -63,11 +65,10 @@ extension CreateRecipeView {
 
             Text("Description")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
-                .padding(.bottom, 2)
+            //.padding(.bottom, 2)
 
             RichTextFormView(placeHolder: "Details", text: $vm.description)
-            // .frame(maxHeight: 200)
-
+            
             selectImageView
                 .frame(maxWidth: .infinity)
                 .frame(height: 200)
@@ -82,7 +83,8 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .padding(.all, 15)
+            .frame(height: 20)
+            .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
@@ -98,11 +100,10 @@ extension CreateRecipeView {
                               .foregroundColor(.gray)
                 )
                 .font(.caption)
-                .padding()
-                .frame(height: 50)
-                .frame(maxWidth: .infinity)
-                .padding(.all, 10)
                 .foregroundStyle(.black)
+                .frame(height: 20)
+                .frame(maxWidth: .infinity)
+                .padding()
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray)
@@ -129,20 +130,21 @@ extension CreateRecipeView {
             Picker("Catagory", selection: $vm.category) {
                 ForEach(catagories, id: \.self) { catagory in
                     Text(catagory)
+                       
                 }
             }.pickerStyle(MenuPickerStyle())
                 .tint(.orange)
                
-                
+            Spacer()
         }
-        .frame(height: 50)
+        .frame(height: 30)
         .frame(maxWidth: .infinity)
-        .padding(.all, 10)
+        .padding()
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.gray)
+                
             )
-
     }
 
     var saveOption: some View {
@@ -155,8 +157,8 @@ extension CreateRecipeView {
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
                     .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
-                    .WithDefaultRectangularBgModifier(bgColor: .green, cornerRadius: 20)
-                   // .padding(.horizontal,20)
+                    .WithDefaultRectangularBgModifier(bgColor: .orange, cornerRadius: 20)
+                    .padding(.horizontal,50)
             }
         }
         .alert(isPresented: $vm.showAlert) {

@@ -18,11 +18,11 @@ extension Color {
         
         let primaryText = Color("PrimaryText")
         
-//        let secondaryText = Color("SecondaryTextColor")
-//        let primaryDivider = Color("primaryDivider")
-//        
-//        let primaryBG = Color("PrimaryBG")
-//        let searchBG = Color("searchBG")
+       let levenda = Color("Levenda")
+       let merun = Color("Merun")
+
+        let mustard = Color("Mustard")
+       let blueis = Color("Blueis")
 //        let darkRed = Color("DarkRed")
 //        
 //     

@@ -25,7 +25,16 @@ struct RichTextFormView: View {
         }
        
         .frame(maxWidth: .infinity, alignment: .top)
-        .modifier(DefaultRoundedRectangleOverlay(cornerRadius: 10))
+       // .modifier(DefaultRoundedRectangleOverlay(cornerRadius: 10))
+        .padding()
+        .padding()
+       
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
+                .shadow(color: .gray, radius: 3, x: 1, y: 3)
+        )
         .onTapGesture {
             showSheet = true
         }

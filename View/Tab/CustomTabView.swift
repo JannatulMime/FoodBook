@@ -42,7 +42,7 @@ struct CustomTabView: View {
                         Text("Recipe")
                     }
                 }.tag(2)
-            
+//            
             
             ProfileView()
                 .tabItem {

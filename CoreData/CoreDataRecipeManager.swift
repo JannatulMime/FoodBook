@@ -10,7 +10,6 @@ import Foundation
 
 class CoreDataRecipeManager {
     
-    //
     
     let manager = CoreDataManager.instance
 
@@ -25,6 +24,7 @@ class CoreDataRecipeManager {
 
         return manager.save()
     }
+    
 
     func updateRecipe(recipe: Recipe) -> Bool {
         guard let updateEntity = getRecipeEntity(from: recipe.id) else {

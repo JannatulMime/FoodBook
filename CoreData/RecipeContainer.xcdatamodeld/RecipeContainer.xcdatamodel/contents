@@ -3,8 +3,8 @@
     <entity name="RecipeEntity" representedClassName="RecipeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="fileName" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="imageUrl" optional="YES" attributeType="URI"/>
         <attribute name="ingridients" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
     </entity>

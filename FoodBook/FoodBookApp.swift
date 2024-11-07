@@ -27,10 +27,10 @@ struct FoodBookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //RootView()
+            RootView()
 
             //      ContentView()
-             EditProfileView()
+            // EditProfileView()
             // CreateRecipeView()
             // RecipeListView()
             //   TestMediaPicker()

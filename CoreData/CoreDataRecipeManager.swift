@@ -20,7 +20,7 @@ class CoreDataRecipeManager {
         newRecipe.ingridients = recipe.ingredients
         newRecipe.id = recipe.id
         newRecipe.duration = recipe.duration
-        newRecipe.imageUrl = URL(string: recipe.image ?? "")
+        newRecipe.fileName = recipe.image ?? ""
 
         return manager.save()
     }
@@ -96,7 +96,7 @@ private extension RecipeEntity {
                       details: NSAttributedString(),
                       ingredients: ingridients ?? "",
                       duration: duration ?? "",
-                      image: imageUrl?.absoluteString,
+                      image: fileName,
                       category: category ?? "",
                       id: id ?? "")
     }

@@ -24,6 +24,7 @@
 		F3DF418B2CD9C6A10081EE2E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F3DF418A2CD9C6A10081EE2E /* FirebaseFirestore */; };
 		F3DF418D2CD9C6A10081EE2E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F3DF418C2CD9C6A10081EE2E /* FirebaseStorage */; };
 		F3F506D12CCBD3FF00939169 /* CustomImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F506D02CCBD3FF00939169 /* CustomImagePicker.swift */; };
+		F3F6F6A32CDD008000E916EC /* LocalFileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F6F6A22CDD008000E916EC /* LocalFileStore.swift */; };
 		F3FF0D5E2CBB7404005F7AA4 /* DefaultModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FF0D5D2CBB7404005F7AA4 /* DefaultModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		F3C798A92CC53B43004575F0 /* Int+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extention.swift"; sourceTree = "<group>"; };
 		F3D3A1792CB42302004C8345 /* CustomCatagoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCatagoryButton.swift; sourceTree = "<group>"; };
 		F3F506D02CCBD3FF00939169 /* CustomImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePicker.swift; sourceTree = "<group>"; };
+		F3F6F6A22CDD008000E916EC /* LocalFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileStore.swift; sourceTree = "<group>"; };
 		F3FF0D5D2CBB7404005F7AA4 /* DefaultModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 				F363F2B02CB6C06000C7DFB8 /* PhotoPickerView.swift */,
 				F3FF0D5D2CBB7404005F7AA4 /* DefaultModifier.swift */,
 				F3B999502CBAB4AE00D4A82D /* UploadingVideo.swift */,
+				F3F6F6A22CDD008000E916EC /* LocalFileStore.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3B999512CBAB4AE00D4A82D /* UploadingVideo.swift in Sources */,
+				F3F6F6A32CDD008000E916EC /* LocalFileStore.swift in Sources */,
 				F38CD9F12CBBB78B00780E30 /* PhotoPickerCoordinator.swift in Sources */,
 				F38CD9F32CBBB7EF00780E30 /* TestMediaPicker.swift in Sources */,
 				7B43B5222CBC034100DD1FEB /* RichTextEditorView.swift in Sources */,

@@ -18,7 +18,7 @@ struct HomeView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 5) {
                     ForEach(vm.savedEntities) { recipe in
-                        VerticalRecipeItem(title1: recipe.name ?? "", image1: recipe.imageUrl?.absoluteString ?? "", title2: recipe.name ?? "", image2: recipe.imageUrl?.absoluteString ?? "")
+                        VerticalRecipeItem(title1: recipe.name ?? "", image1: recipe.fileName ?? "", title2: recipe.name ?? "", image2: recipe.fileName ?? "")
                     }
                 }
             }

@@ -10,67 +10,61 @@ import SwiftUI
 struct RecipeDetailsView: View {
     @StateObject var vm: RecipeDetailsVM
     @Environment(\.presentationMode) var presentationMode
-   // @Binding var isEditing: Bool
+    let localFileStore = LocalFileStore()
+    // @Binding var isEditing: Bool
 
     let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .white, leftIconName: "chevron.left", rightIconName: "pencil")
 
     init(recipeId: String) {
         _vm = StateObject(wrappedValue: RecipeDetailsVM(recipeId: recipeId))
-       
     }
 
     var body: some View {
+        //   VStack {
 
-     //   VStack {
-               
-                contentView
-                    .overlay(
+        contentView
+            .overlay(
                 CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-                  
                     self.presentationMode.wrappedValue.dismiss()
                 }, onRightButtonClicked: { vm.gotoCreateRecipe = true
-                
-                   
                 }
                 )
                 .padding(.bottom, 250)
                 .offset(y: -250)
-           
-    )
+            )
 
-                    .overlay(
+            .overlay(
                 floatingAddButton
                     .offset(x: 120)
             )
-            
-       // }
-        
-        .popover(isPresented: $vm.isAddButtonPressed) {
-            CreateRecipeView(recipe: vm.recipe)
-        }
 
-        .navigationDestination(isPresented: $vm.gotoCreateRecipe, destination: {
-            CreateRecipeView(recipe: vm.recipe)
-        })
+            // }
+
+            .popover(isPresented: $vm.isAddButtonPressed) {
+                CreateRecipeView(recipe: vm.recipe)
+            }
+
+            .navigationDestination(isPresented: $vm.gotoCreateRecipe, destination: {
+                CreateRecipeView(recipe: vm.recipe)
+            })
     }
 
     // Function to load an image from the app's directory
-    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
-        
-        if let fileURL = URL(string: path),
-                 let uiImage = UIImage(contentsOfFile: fileURL.path) {
-                 //   Image(uiImage: uiImage) // Convert UIImage to SwiftUI Image
-            return uiImage
-                }
-//        let fileManager = FileManager.default
-//        if fileManager.fileExists(atPath: path) {
-//            return UIImage(contentsOfFile: path)
-//        } else {
-//            print("File does not exist at path: \(path)")
-//            return nil
+//    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
+//        if let fileURL = URL(string: path),
+//           let uiImage = UIImage(contentsOfFile: fileURL.path) {
+//            //   Image(uiImage: uiImage) // Convert UIImage to SwiftUI Image
+//            return uiImage
 //        }
-        return nil
-    }
+////        let fileManager = FileManager.default
+////        if fileManager.fileExists(atPath: path) {
+////            return UIImage(contentsOfFile: path)
+////        } else {
+////            print("File does not exist at path: \(path)")
+////            return nil
+////        }
+//        return nil
+//    }
 }
 
 #Preview {
@@ -82,42 +76,39 @@ struct RecipeDetailsView: View {
 extension RecipeDetailsView {
     var contentView: some View {
         ScrollView {
-        VStack(spacing: 20) {
- 
+            VStack(spacing: 20) {
                 topView
 
                     .overlay(
-                        
                         overlayView
                             .offset(x: 160)
                     )
-                
-                
+
                 VStack(spacing: 15) {
                     recipeName
-                    
+
                     verticalItem
-                    
+
                     describeRecipe
-                    
+
                     recipeReviews
-                    
+
                     Spacer()
                     //                HStack {
                     //                    Spacer()
                     //                    deleteButton
                     //                }.padding()
-                    
+
                 }.padding(.horizontal)
                 Spacer()
-        }}.background(Color.white)
+            }
+        }.background(Color.white)
             .navigationBarBackButtonHidden(true)
             .ignoresSafeArea()
     }
 
     var overlayView: some View {
         VStack {
-           
             Spacer()
 
             Image(systemName: "heart.fill")
@@ -132,7 +123,7 @@ extension RecipeDetailsView {
 
     var topView: some View {
         ZStack(alignment: .bottomLeading) {
-            if let path = vm.recipe?.image, let uiImage = loadImageFromDocumentsDirectory(path: path) {
+            if let fileName = vm.recipe?.image, let uiImage = localFileStore.getUiImageFrom(fileName: fileName){
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()

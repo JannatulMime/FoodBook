@@ -24,6 +24,7 @@ class CreateRecipeVM: ObservableObject {
     let localRecipeStore: CoreDataRecipeManager = CoreDataRecipeManager()
 
     var isEdit: Bool = false
+    let localFileStore = LocalFileStore()
 
     init(recipe: Recipe?) {
         if let recipe = recipe {
@@ -38,23 +39,23 @@ class CreateRecipeVM: ObservableObject {
     }
 
     private func addRecipe() -> Bool {
-        var imagePath = ""
+        var fileName = UUID().uuidString + "_Local.jpg"
         if let imageData = pickedImage {
-            imagePath = saveImageToDocumentsDirectory(imageData: imageData) ?? ""
+            let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
 
-        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: imagePath, category: category, id: UUID().uuidString)
+        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: fileName, category: category, id: UUID().uuidString)
 
         return localRecipeStore.addRecipe(recipe: newRecipe)
     }
 
     private func updateRecipe() -> Bool {
-        var imagePath = ""
+        var fileName = UUID().uuidString + "_Local.jpg"
         if let imageData = pickedImage {
-            imagePath = saveImageToDocumentsDirectory(imageData: imageData) ?? ""
+            let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
 
-        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: imagePath, category: category, id: UUID().uuidString)
+        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: fileName, category: category, id: UUID().uuidString)
 
         let isSuccess = localRecipeStore.updateRecipe(recipe: newRecipe)
         return isSuccess
@@ -97,24 +98,24 @@ class CreateRecipeVM: ObservableObject {
         return (true, "")
     }
 
-    private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
-        
-        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-
-        // Create a unique file name
-        let fileName = UUID().uuidString + ".jpg"
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-
-        do {
-            // Save the image data to the file URL
-            try imageData.write(to: fileURL)
-            print("Image saved to: \(fileURL)")
-            return fileURL.absoluteString
-        } catch {
-            print("Failed to save image: \(error.localizedDescription)")
-            return nil
-        }
-    }
+//    private func saveImageToDocumentsDirectory(imageData: Data) -> String? {
+//        
+//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+//            return nil
+//        }
+//
+//        // Create a unique file name
+//        let fileName = UUID().uuidString + ".jpg"
+//        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+//
+//        do {
+//            // Save the image data to the file URL
+//            try imageData.write(to: fileURL)
+//            print("Image saved to: \(fileURL)")
+//            return fileURL.absoluteString
+//        } catch {
+//            print("Failed to save image: \(error.localizedDescription)")
+//            return nil
+//        }
+//    }
 }

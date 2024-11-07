@@ -1,18 +1,18 @@
 //
-//  EditProfileView.swift
+//  CreateProfileView.swift
 //  FoodBook
 //
-//  Created by Habibur Rahman on 4/11/24.
+//  Created by Habibur Rahman on 7/11/24.
 //
 
 import SwiftUI
 
-struct EditProfileView: View {
-   
-    @StateObject var vm = EditProfileVM()
+struct CreateProfileView: View {
+    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject var vm = CreateProfileVM()
     @Environment(\.presentationMode) var presentationMode
     
-    let topBarConfig = CommonTopBarData(title: "Edit Profile", bgColor: Color.theme.blueis, leftIconName: "chevron.left", rightIconName: "")
+    let topBarConfig = CommonTopBarData(title: "Edit Profile", bgColor: Color.theme.greene, leftIconName: "chevron.left", rightIconName: "")
     
     var body: some View {
         NavigationStack {
@@ -28,46 +28,25 @@ struct EditProfileView: View {
                     ProfileView()
                 })
         }
+        
+        
     }
 }
 
 #Preview {
-    EditProfileView()
+    CreateProfileView()
 }
 
-extension EditProfileView {
-    
+
+extension CreateProfileView {
     var contentView: some View {
-        VStack(spacing: 50) {
-            circleImage
+        VStack(spacing:50) {
             nameTextField
             emailTextField
-            saveButton
-            
+            createProfileButton
         }.padding()
     }
     
-    var circleImage: some View {
-        HStack(spacing: 10) {
-            CustomImagePicker(selectedImageData: $vm.pickedImage)
-                .frame(width: 150, height: 150)
-                .clipShape(.circle)
-            
-            
-            Button {
-               
-
-            } label: {
-                Text("Delete Picture")
-                    .frame(height: 50)
-                    .frame(maxWidth: .infinity)
-                    .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
-                    .WithDefaultRectangularBgModifier(bgColor: Color.theme.mustard, cornerRadius: 20)
-                  //  .padding(.horizontal,50)
-            }
-            
-        }
-    }
     
     var nameTextField: some View {
      
@@ -110,20 +89,27 @@ extension EditProfileView {
         }
     }
     
-    var saveButton: some View {
+    var createProfileButton: some View {
         HStack {
             Button {
                 vm.gotoProfileView = true
                 
+                Task {
+                    await authViewModel.createUser(
+                        email: vm.email,
+                        password: vm.password,
+                        name: vm.profileName)
+                }
                 
             } label: {
-                Text("Save")
+                Text("Create Profile")
                     .frame(height: 50)
                     .frame(maxWidth: .infinity)
                     .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
-                    .WithDefaultRectangularBgModifier(bgColor: Color.theme.blueis, cornerRadius: 20)
+                    .WithDefaultRectangularBgModifier(bgColor: Color.theme.greene, cornerRadius: 20)
                     .padding(.horizontal,50)
             }
         }
     }
+    
 }

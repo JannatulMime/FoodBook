@@ -21,6 +21,7 @@ struct ProfileView: View {
             )
 
             content
+                .navigationBarBackButtonHidden(true)
                 .navigationDestination(isPresented: $vm.gotoEditProfile, destination: {
                     EditProfileView()
                 })

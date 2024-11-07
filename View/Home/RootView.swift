@@ -14,7 +14,7 @@ struct RootView: View {
     // var viewName: String = ""
 
     var body: some View {
-        NavigationStack {
+        //NavigationStack {
             VStack(spacing: 50) {
                 homeView
                 listView
@@ -32,7 +32,7 @@ struct RootView: View {
             .navigationDestination(isPresented: $gotoHomeView, destination: {
                 HomeView()
             })
-        }
+       // }
     }
 //    func modifyTextsize(viewName: String) {
 //        Text(viewName)

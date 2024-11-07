@@ -23,18 +23,21 @@ struct CreateRecipeView: View {
 
     var body: some View {
         
-        CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
-            self.presentationMode.wrappedValue.dismiss()
-        },onRightButtonClicked: {
-            self.presentationMode.wrappedValue.dismiss()
-    
-        })
+        VStack{
+            CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
+            },onRightButtonClicked: {
+                self.presentationMode.wrappedValue.dismiss()
         
-        contentView
-            .navigationBarBackButtonHidden(true)
-            .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
-                RecipeListView()
             })
+            
+            contentView
+                .navigationBarBackButtonHidden(true)
+                .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
+                    RecipeListView()
+                })
+
+        }
     }
 }
 

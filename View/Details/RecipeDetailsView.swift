@@ -38,8 +38,6 @@ struct RecipeDetailsView: View {
                     .offset(x: 120)
             )
 
-            // }
-
             .popover(isPresented: $vm.isAddButtonPressed) {
                 CreateRecipeView(recipe: vm.recipe)
             }
@@ -48,23 +46,6 @@ struct RecipeDetailsView: View {
                 CreateRecipeView(recipe: vm.recipe)
             })
     }
-
-    // Function to load an image from the app's directory
-//    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
-//        if let fileURL = URL(string: path),
-//           let uiImage = UIImage(contentsOfFile: fileURL.path) {
-//            //   Image(uiImage: uiImage) // Convert UIImage to SwiftUI Image
-//            return uiImage
-//        }
-////        let fileManager = FileManager.default
-////        if fileManager.fileExists(atPath: path) {
-////            return UIImage(contentsOfFile: path)
-////        } else {
-////            print("File does not exist at path: \(path)")
-////            return nil
-////        }
-//        return nil
-//    }
 }
 
 #Preview {
@@ -123,8 +104,9 @@ extension RecipeDetailsView {
 
     var topView: some View {
         ZStack(alignment: .bottomLeading) {
-            if let fileName = vm.recipe?.image, let uiImage = localFileStore.getUiImageFrom(fileName: fileName){
-                Image(uiImage: uiImage)
+            if let imageData = vm.recipe?.getImageData(),
+               let image = UIImage(data: imageData) {
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 400, height: 350)
@@ -134,11 +116,6 @@ extension RecipeDetailsView {
                     .frame(width: 400, height: 350)
                     .scaledToFit()
             }
-
-//
-//            Text("Biriyani")
-//                .foregroundStyle(.orange)
-//                .padding()
         }
     }
 

@@ -13,14 +13,14 @@ struct RichTextFormView: View {
     @State private var showSheet = false
 
     var body: some View {
-        HStack(alignment: .center) {
+        HStack/*(alignment: .center)*/ {
             HStack {
                 Text(text.length == 0 ? placeHolder.toAttributedTextForPlaceHolder() : AttributedString(text))
                     .font(.caption)
                     .foregroundColor(text.length == 0 ? Color.gray : Color.white)
 
                 Spacer()
-            }
+            }.padding(.leading)
             Image(systemName: "square.and.pencil")
         }
        
@@ -33,7 +33,7 @@ struct RichTextFormView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
                 .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
-                .shadow(color: .gray, radius: 3, x: 1, y: 3)
+                
         )
         .onTapGesture {
             showSheet = true

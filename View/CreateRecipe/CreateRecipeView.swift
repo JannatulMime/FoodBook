@@ -22,13 +22,13 @@ struct CreateRecipeView: View {
     }
 
     var body: some View {
-        
-        VStack{
+        ScrollView {
+            VStack {
             CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
                 self.presentationMode.wrappedValue.dismiss()
             },onRightButtonClicked: {
                 self.presentationMode.wrappedValue.dismiss()
-        
+                
             })
             
             contentView
@@ -36,8 +36,12 @@ struct CreateRecipeView: View {
                 .navigationDestination(isPresented: $vm.goRecipeListPage, destination: {
                     RecipeListView()
                 })
-
+            
         }
+            
+        }.ignoresSafeArea()
+        
+    
     }
 }
 
@@ -47,88 +51,28 @@ struct CreateRecipeView: View {
 
 extension CreateRecipeView {
     var contentView: some View {
-        
-        VStack(alignment: .leading, spacing: 10) {
+//        VStack(alignment: .leading, spacing: 15) {
+        VStack(spacing: 20) {
+                recipeTitle
+
+                description
             
-                Text("Title")
-                    .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+                selectImageView
 
-                TextField("", text: $vm.title,
-                          prompt: Text("Enter title")
-                              .font(.caption)
-                              .foregroundColor(.gray)
-                )
-                .foregroundStyle(.white)
-                .frame(height: 15)
-                .padding()
-              
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.white)
-                        .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
-                        .shadow(color: .gray, radius: 3, x: 1, y: 3)
-                )
-            
-            
-
-            Text("Description")
-                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
-            //.padding(.bottom, 2)
-
-            RichTextFormView(placeHolder: "Details", text: $vm.description)
-                
-            selectImageView
-                .frame(maxWidth: .infinity)
-                .frame(height: 200)
-                .clipped()
-
-            Text("Ingredients")
-                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
-
-            TextField("", text: $vm.ingredients,
-                      prompt: Text("Write here your ingredients")
-                          .font(.caption)
-                          .foregroundColor(.gray)
-            )
-            .foregroundStyle(.white)
-            .frame(height: 20)
-            .padding()
-            
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                    .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
-                    .shadow(color: .gray, radius: 3, x: 1, y: 3)
-            )
-
+                ingredients
            
                 selectCategory
 
-    
+                durationTime
 
-                TextField("", text: $vm.duration,
-                          prompt: Text("Duration Time")
-                    .foregroundColor(.gray)
-                )
-                .font(.caption)
-                .foregroundStyle(.black)
-                .frame(height: 15)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.white)
-                        .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
-                        .shadow(color: .gray, radius: 3, x: 1, y: 3)
-                )
-            
-
+               
             Spacer()
             saveOption
             Spacer().frame(height: 5)
         }
         .background(Color.white)
         .padding()
+       
     }
 }
 
@@ -157,7 +101,7 @@ extension CreateRecipeView {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
-                    .shadow(color: .gray, radius: 3, x: 1, y: 3)
+                   
                 
             )
         
@@ -183,9 +127,97 @@ extension CreateRecipeView {
             Alert(title: Text("Invalid Input"), message: Text(vm.alertMessage), dismissButton: .default(Text("OK")))
         }
     }
+    
+    var recipeTitle: some View {
+        VStack(alignment: .leading) {
+            Text("Title")
+                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+            
+            TextField("", text: $vm.title,
+                      prompt: Text("Enter title")
+                .font(.caption)
+                .foregroundColor(.gray)
+            )
+            .foregroundStyle(.white)
+            .frame(height: 15)
+            .padding()
+            
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
+                
+            )
+            
+        }
+    
+    }
+    
+    var description: some View {
+        VStack(alignment: .leading) {
+            Text("Description")
+                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+            //.padding(.bottom, 2)
+            
+            RichTextFormView(placeHolder: "Details", text: $vm.description)
+            
+        }
+    }
 
     var selectImageView: some View {
-        CustomImagePicker(selectedImageData: $vm.pickedImage)
+        VStack(alignment: .leading) {
+            Text("Recipe Image")
+                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+            
+            CustomImagePicker(selectedImageData: $vm.pickedImage)
+                .frame(maxWidth: .infinity)
+                .frame(height: 180)
+        }
+        
+    }
+    
+    var ingredients: some View {
+        VStack(alignment: .leading) {
+            Text("Ingredients")
+                .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+
+            TextField("", text: $vm.ingredients,
+                      prompt: Text("Write here your ingredients")
+                          .font(.caption)
+                          .foregroundColor(.gray)
+            )
+            .foregroundStyle(.white)
+            .frame(height: 20)
+            .padding()
+            
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
+                   
+            )
+
+           
+        }
+    }
+    
+    var durationTime: some View {
+        TextField("", text: $vm.duration,
+                  prompt: Text("Duration Time")
+            .foregroundColor(.gray)
+        )
+        .font(.caption)
+        .foregroundStyle(.black)
+        .frame(height: 15)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
+        )
+    
+
     }
 }
 

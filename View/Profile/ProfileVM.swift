@@ -9,9 +9,9 @@ import Foundation
 
 class ProfileVM: ObservableObject {
    
-    @Published var image: String = ""
-    @Published var name: String = ""
-    @Published var email: String = ""
+    @Published var image: String = "ProfilePic"
+    @Published var name: String = "yummy"
+    @Published var email: String = "yu@yahoo.com"
     
     @Published var gotoEditProfile: Bool = false
 }

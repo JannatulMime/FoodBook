@@ -42,15 +42,15 @@ struct CustomTabView: View {
                         Text("Recipe")
                     }
                 }.tag(2)
-//            
             
-//            ProfileView()
-//                .tabItem {
-//                    VStack {
-//                        Image(systemName: "person.crop.circle")
-//                        Text("Profile")
-//                    }
-//                }.tag(3)
+            
+            LoginProfileView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "person.crop.circle")
+                        Text("Profile")
+                    }
+                }.tag(3)
             
         }.tint(.yellow)
             

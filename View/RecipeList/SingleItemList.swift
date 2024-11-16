@@ -12,12 +12,19 @@ struct SingleItemList: View {
      let name: String
      let duration: String
      let ingridients: String
+     let localFileStore = LocalFileStore()
+     var recipe : Recipe?
     
     var body: some View {
         
         HStack {
-            if let uiImage = loadImageFromDocumentsDirectory(path: image) {
-                Image(uiImage: uiImage)
+//            if let uiImage = loadImageFromDocumentsDirectory(path: image) {
+//                Image(uiImage: uiImage)
+            
+            if let imageData = recipe?.getImageData(),
+               let image = UIImage(data: imageData) {
+                Image(uiImage: image)
+           
                 .resizable()
                 .frame(width: 60, height: 50)
                 .cornerRadius(10)
@@ -67,15 +74,15 @@ struct SingleItemList: View {
         
     }
     
-    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: path) {
-            return UIImage(contentsOfFile: path)
-        } else {
-            print("File does not exist at path: \(path)")
-            return nil
-        }
-    }
+//    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
+//        let fileManager = FileManager.default
+//        if fileManager.fileExists(atPath: path) {
+//            return UIImage(contentsOfFile: path)
+//        } else {
+//            print("File does not exist at path: \(path)")
+//            return nil
+//        }
+//    }
 }
 
 #Preview {

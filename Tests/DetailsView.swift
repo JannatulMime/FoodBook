@@ -38,7 +38,7 @@ struct DetailsView: View {
                 .zIndex(0)
             Spacer()
             
-        }
+        }.ignoresSafeArea()
     }
     
     func getHeaderHeight() -> CGFloat {

@@ -23,20 +23,11 @@ struct ProfileView: View {
             content
                 .navigationBarBackButtonHidden(true)
                 .navigationDestination(isPresented: $vm.gotoEditProfile, destination: {
-                    EditProfileView()
+                    CreateProfileView()
                 })
         }
     }
 
-    private func loadImageFromDocumentsDirectory(path: String) -> UIImage? {
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: path) {
-            return UIImage(contentsOfFile: path)
-        } else {
-            print("File does not exist at path: \(path)")
-            return nil
-        }
-    }
 }
 
 #Preview {
@@ -45,7 +36,7 @@ struct ProfileView: View {
 
 extension ProfileView {
     var content: some View {
-        VStack(spacing: 5) {
+        VStack(alignment: .leading, spacing: 15) {
             profilePic
             profileName
             profileEmail
@@ -55,29 +46,20 @@ extension ProfileView {
     }
 
     var profilePic: some View {
-        if let uiImage = loadImageFromDocumentsDirectory(path: vm.image) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .frame(width: 120, height: 100)
-                .clipShape(.circle)
-                .scaledToFit()
-
-        } else {
             Image(vm.image)
                 .resizable()
                 .frame(width: 120, height: 100)
                 .clipShape(.circle)
                 .scaledToFit()
         }
-    }
 
     var profileName: some View {
         Text(vm.name)
-            .modifier(CustomTextModifier(fontSize: 20, color: .black, weight: .bold))
+            .modifier(CustomTextModifier(fontSize: 30, color: .black, weight: .bold))
     }
 
     var profileEmail: some View {
         Text(vm.email)
-            .modifier(CustomTextModifier(fontSize: 10, color: .black, weight: .bold))
+            .modifier(CustomTextModifier(fontSize: 20, color: .black, weight: .bold))
     }
 }

@@ -11,7 +11,7 @@ struct RecipeDetailsView: View {
     @StateObject var vm: RecipeDetailsVM
     @Environment(\.presentationMode) var presentationMode
     let localFileStore = LocalFileStore()
-    // @Binding var isEditing: Bool
+    
 
     let topBarConfig = CommonTopBarData(title: "", bgColor: .clear, forgroundColor: .white, leftIconName: "chevron.left", rightIconName: "pencil")
 

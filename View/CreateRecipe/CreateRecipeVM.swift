@@ -14,11 +14,13 @@ class CreateRecipeVM: ObservableObject {
     @Published var category: String = ""
     @Published var duration: String = ""
     @Published var image: String? = ""
+    @Published var numberOfTime:String = ""
 
     @Published var goRecipeListPage: Bool = false
     @Published var pickedImage: Data?
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    
 
     @Published var savedEntities: [RecipeEntity] = []
     let localRecipeStore: CoreDataRecipeManager = CoreDataRecipeManager()
@@ -39,7 +41,7 @@ class CreateRecipeVM: ObservableObject {
     }
 
     private func addRecipe() -> Bool {
-        var fileName = UUID().uuidString + "_Local.jpg"
+        let fileName = UUID().uuidString + "_Local.jpg"
         if let imageData = pickedImage {
             let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
@@ -50,7 +52,7 @@ class CreateRecipeVM: ObservableObject {
     }
 
     private func updateRecipe() -> Bool {
-        var fileName = UUID().uuidString + "_Local.jpg"
+        let fileName = UUID().uuidString + "_Local.jpg"
         if let imageData = pickedImage {
             let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }

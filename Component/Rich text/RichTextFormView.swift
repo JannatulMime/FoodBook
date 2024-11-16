@@ -32,7 +32,7 @@ struct RichTextFormView: View {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: Color.gray, radius: 2, x: 0, y: 2)
+                .shadow(color: Color.gray, radius: 2, x: -1, y: 2)
                 
         )
         .onTapGesture {

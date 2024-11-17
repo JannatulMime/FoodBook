@@ -26,12 +26,7 @@ struct CreateRecipeView: View {
     var body: some View {
 
         NavigationStack {
-            
-            Form{
-                recipeTitle
-                description
-            }
-            
+        
             contentView
                 .overlay(
                     CommonTopBar(data: topBarConfig, onLeftButtonClicked: {
@@ -64,9 +59,7 @@ extension CreateRecipeView {
                 Spacer().frame(height: 20)
 
                 
-                    recipeTitle
-                
-               
+                recipeTitle
 
                 description
 

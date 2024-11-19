@@ -17,23 +17,23 @@ struct CustomTabView: View {
     var body: some View {
         TabView {
             
+            RootView()
+            .tabItem {
+                VStack {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            }.tag(0)
+            
+            
             SearchView()
                 .tabItem {
                     VStack {
                         Image(systemName: "magnifyingglass")
                         Text("Search")
                     }
-                }.tag(0)
+                }.tag(1)
               
-            
-            HomeView()
-            .tabItem {
-                VStack {
-                    Image(systemName: "house")
-                    Text("Home")
-                }
-            }.tag(1)
-            
             
             CreateRecipeView()
                 .tabItem {

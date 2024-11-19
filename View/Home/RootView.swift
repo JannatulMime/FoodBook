@@ -10,19 +10,19 @@ import SwiftUI
 struct RootView: View {
     @State var gotoHomeView: Bool = false
     @State var gotoCreateRecipeView: Bool = false
-    @State var gotoRecipeListView: Bool = false
+    @State var gotoLoginView: Bool = false
     // var viewName: String = ""
 
     var body: some View {
         //NavigationStack {
             VStack(spacing: 50) {
                 homeView
-                listView
+                loginView
                 createRecipeView
             }
 
-            .navigationDestination(isPresented: $gotoRecipeListView, destination: {
-                RecipeListView()
+            .navigationDestination(isPresented: $gotoLoginView, destination: {
+                LoginProfileView()
             })
 
             .navigationDestination(isPresented: $gotoCreateRecipeView, destination: {
@@ -63,11 +63,11 @@ extension RootView {
         }
     }
 
-    var listView: some View {
+    var loginView: some View {
         Button(action: {
-            gotoRecipeListView = true
+            gotoLoginView = true
         }) {
-            Text("ListView")
+            Text("LoginProfileView")
                 .modifier(CustomTextModifier(fontSize: 15, color: .white, weight: .bold))
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)

@@ -30,7 +30,7 @@ struct FoodBookApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack{
-                RootView()
+            CustomTabView()
                // ContentView()
                    // .environmentObject(authViewModel)
             }

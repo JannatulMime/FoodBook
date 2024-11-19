@@ -181,7 +181,8 @@ extension CreateRecipeView {
 
             CustomImagePicker(selectedImageData: $vm.pickedImage)
                 .frame(maxWidth: .infinity)
-                .frame(height: 180)
+                .frame(height: 170)
+            
         }
     }
 

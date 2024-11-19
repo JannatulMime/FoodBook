@@ -50,10 +50,11 @@ extension CreateProfileView {
     
     var circleImage: some View {
         HStack(spacing: 10) {
-            CustomImagePicker(selectedImageData: $vm.pickedImage)
-                .frame(width: 150, height: 150)
-                .clipShape(.circle)
             
+            CustomImagePicker(selectedImageData: $vm.pickedImage)
+                .frame(width: 100, height: 100)
+                .clipShape(.circle)
+               
             
             Button {
                

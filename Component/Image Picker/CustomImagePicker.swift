@@ -25,7 +25,7 @@ struct CustomImagePicker: View {
                     
                     ZStack(alignment: .center) {
                         Rectangle()
-                            .fill(.gray.opacity(0.2))
+                            .fill(.clear)
 
                         if originalImage == nil {
                             placeholderView
@@ -69,6 +69,8 @@ extension CustomImagePicker {
     var placeholderView: some View {
         CustomImageView(uiImage: UIImage(systemName: "photo"),
                         contenMode: .fit)
+       // .frame(width: 200, height: 200)
+       
     }
 
     var originalImageView: some View {

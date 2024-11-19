@@ -12,7 +12,7 @@ class CreateRecipeVM: ObservableObject {
     @Published var description: NSAttributedString = NSAttributedString.empty
     @Published var ingredients: String = ""
     @Published var category: String = ""
-    @Published var duration: String = ""
+   // @Published var duration: String = ""
     @Published var image: String? = ""
     @Published var numberOfTime:String = ""
 
@@ -34,7 +34,7 @@ class CreateRecipeVM: ObservableObject {
             description = recipe.details
             ingredients = recipe.ingredients
             category = recipe.category
-            duration = recipe.duration
+            numberOfTime = recipe.duration
             image = recipe.image
             isEdit = true
         }
@@ -46,7 +46,7 @@ class CreateRecipeVM: ObservableObject {
             let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
 
-        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: fileName, category: category, id: UUID().uuidString)
+        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: fileName, category: category, id: UUID().uuidString)
 
         return localRecipeStore.addRecipe(recipe: newRecipe)
     }
@@ -57,7 +57,7 @@ class CreateRecipeVM: ObservableObject {
             let _ = localFileStore.saveImageInDefaultDirectory(imageData: imageData, fileName: fileName) //saveImageToDocumentsDirectory(imageData: imageData) ?? ""
         }
 
-        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: fileName, category: category, id: UUID().uuidString)
+        let newRecipe = Recipe(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: fileName, category: category, id: UUID().uuidString)
 
         let isSuccess = localRecipeStore.updateRecipe(recipe: newRecipe)
         return isSuccess
@@ -77,7 +77,7 @@ class CreateRecipeVM: ObservableObject {
     }
 
     func createRecipe() -> Recipe {
-        return Recipe(name: title, details: description, ingredients: ingredients, duration: duration, image: "", category: category)
+        return Recipe(name: title, details: description, ingredients: ingredients, duration: numberOfTime, image: "", category: category)
     }
 
     private func isValid() -> (Bool, String) {
@@ -93,7 +93,7 @@ class CreateRecipeVM: ObservableObject {
         if category.isEmpty {
             return (false, "Please input category")
         }
-        if duration.isEmpty {
+        if numberOfTime.isEmpty {
             return (false, "Please input duration")
         }
 

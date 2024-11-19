@@ -9,13 +9,15 @@ import RichTextKit
 import SwiftUI
 
 struct CreateRecipeView: View {
+    
+    var topBarConfig: CommonTopBarData
+    var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
+    var times = ["10", "20", "30", "40", "50", "60"]
+    
     @State private var selectedDate = Date()
-
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
-    var catagories = ["Dessert", "Breakfast", "Lunch", "Dinner", "Drinks"]
-    var topBarConfig: CommonTopBarData
-    var times = ["10 min", "20 min", "30 min", "40 min", "50 min", "60 min"]
+    
 
     init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
@@ -68,9 +70,9 @@ extension CreateRecipeView {
                 ingredients
 
                 selectCategory
-
+              
                 durationTime
-
+               
                 Spacer()
                 saveOption
                 Spacer().frame(height: 5)
@@ -83,24 +85,34 @@ extension CreateRecipeView {
 
 extension CreateRecipeView {
     var selectCategory: some View {
-        HStack {
-            Text("Category - ")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundStyle(.gray)
-
-            Spacer()
-
-            Picker("Catagory", selection: $vm.category) {
-                ForEach(catagories, id: \.self) { catagory in
-                    Text(catagory)
-                }
-            }.pickerStyle(MenuPickerStyle())
-
-                .tint(.merun)
-
-            // Spacer()
-        }
+//        HStack {
+//            Text("Category - ")
+//                .font(.headline)
+//                .fontWeight(.bold)
+//                .foregroundStyle(.gray)
+//
+//            Spacer()
+//
+//            Picker("Catagory", selection: $vm.category) {
+//                ForEach(catagories, id: \.self) { catagory in
+//                    Text(catagory)
+//                }
+//            }.pickerStyle(MenuPickerStyle())
+//
+//                .tint(.merun)
+//
+//            // Spacer()
+//        }
+        
+        Picker("Catagory", selection: $vm.category) {
+            ForEach(catagories, id: \.self) {
+                Text("\($0)")
+            }.foregroundStyle(.merun)
+            
+        }.pickerStyle(.navigationLink)
+        .tint(.gray)
+        .fontWeight(.bold)
+        
         .frame(height: 20)
         .frame(maxWidth: .infinity)
         .padding()
@@ -196,35 +208,24 @@ extension CreateRecipeView {
     }
 
     var durationTime: some View {
-        
- 
-            Picker("Duration", selection: $vm.numberOfTime) {
-                ForEach(times, id: \.self) {
-                    Text("\($0) min")
-                }
-            }.pickerStyle(.navigationLink)
-        
        
-
-//        Picker("Catagory", selection: $vm.category) {
-//            ForEach(time, id: \.self) { catagory in
-//                Text(catagory)
-//
-//            }
-//        }.pickerStyle(MenuPickerStyle())
-//
-//
-//            .foregroundColor(.gray)
-//
-//        .font(.caption)
-//        .foregroundStyle(.black)
-//        .frame(height: 15)
-//        .frame(maxWidth: .infinity)
-//        .padding()
-//        .background(
-//            RoundedRectangle(cornerRadius: 10)
-//                .fill(Color.white)
-//                .shadow(color: Color.gray, radius: 2, x: 0, y: 1)
-//        )
+                Picker("Duration", selection: $vm.numberOfTime) {
+                    ForEach(times, id: \.self) {
+                        Text("\($0) min")
+                    }.foregroundStyle(.merun)
+                    
+                }.pickerStyle(.navigationLink)
+                
+                    .tint(.gray)
+                    .fontWeight(.bold)
+    
+        .frame(height: 15)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+                .shadow(color: .merun, radius: 2, x: 1, y: 2)
+        )
     }
 }

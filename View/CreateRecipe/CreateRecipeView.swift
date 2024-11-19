@@ -18,6 +18,7 @@ struct CreateRecipeView: View {
     @Environment(\.presentationMode) var presentationMode
     @StateObject var vm: CreateRecipeVM
     
+    let inputRootPading = 20.0
 
     init(recipe: Recipe? = nil) {
         _vm = StateObject(wrappedValue: CreateRecipeVM(recipe: recipe))
@@ -79,7 +80,8 @@ extension CreateRecipeView {
             }
         }
         .background(Color.white)
-        .padding()
+        .padding(.vertical,30)
+       // .padding(.horizontal,10)
     }
 }
 
@@ -146,6 +148,7 @@ extension CreateRecipeView {
         VStack(alignment: .leading) {
             Text("Title")
                 .modifier(CustomTextModifier(fontSize: 18, color: .black, weight: .bold))
+              //  .padding(.horizontal,10)
 
             TextField("", text: $vm.title,
                       prompt: Text("Enter title")
@@ -153,15 +156,14 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .frame(height: 15)
-            .padding()
+            .padding( 10)
 
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
-                    .shadow(color: Color.gray, radius: 2, x: -1, y: 1)
-            )
-        }
+                    .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
+            )//.padding(.horizontal,10)
+        }.padding(.horizontal,inputRootPading)
     }
 
     var description: some View {

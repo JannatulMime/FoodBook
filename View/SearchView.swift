@@ -11,12 +11,7 @@ struct SearchView: View {
     @State private var showingSheet = false
     
     var body: some View {
-        VStack(spacing: 10) {
-            Image("Kheer")
-                .resizable()
-                .frame(height: 300)
-                .frame(maxWidth: .infinity)
-            
+        HStack {
             
             TextField("Find a recipe", text: .constant(""))
                 
@@ -24,8 +19,8 @@ struct SearchView: View {
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(color: .gray ,radius: 3, x: 2, y: 3)
-                .padding(.horizontal, 40)
-            
+                .padding(.horizontal, 30)
+                
             Spacer()
             
 //            GeometryReader { geometry in
@@ -40,7 +35,9 @@ struct SearchView: View {
 //                               .presentationDetents([.medium, .large])
 //                       }
 //            
-        }//.background(.black)
+        }
+     
+        //.background(.black)
         //.padding(.bottom, 30)
     }
 }

@@ -69,7 +69,8 @@ extension CustomImagePicker {
     var placeholderView: some View {
         CustomImageView(uiImage: UIImage(systemName: "photo"),
                         contenMode: .fit)
-       // .frame(width: 200, height: 200)
+       
+        .frame(width: 200, height: 200)
        
     }
 

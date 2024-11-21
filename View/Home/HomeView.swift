@@ -12,6 +12,19 @@ struct HomeView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 10) {
+            HStack(spacing: 20) {
+                Spacer()
+                Image(systemName: "magnifyingglass")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                   
+                Image(systemName: "plus")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(.blue)
+            }
+            .padding()
+            
             HorizontalCatagoryList()
                 .padding()
             

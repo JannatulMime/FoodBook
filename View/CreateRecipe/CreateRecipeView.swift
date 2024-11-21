@@ -115,14 +115,15 @@ extension CreateRecipeView {
         .tint(.gray)
         .fontWeight(.bold)
         
-        .frame(height: 20)
-        .frame(maxWidth: .infinity)
-        .padding()
+        .foregroundStyle(.black)
+        .padding( 10)
+
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: .gray, radius: 2, x: -1, y: 1)
+                .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
         )
+    .padding(.horizontal,inputRootPading)
     }
 
     var saveOption: some View {
@@ -162,7 +163,7 @@ extension CreateRecipeView {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
-            )//.padding(.horizontal,10)
+            )
         }.padding(.horizontal,inputRootPading)
     }
 
@@ -173,7 +174,7 @@ extension CreateRecipeView {
             // .padding(.bottom, 2)
 
             RichTextFormView(placeHolder: "Details", text: $vm.description)
-        }
+        }.padding(.horizontal,inputRootPading)
     }
 
     var selectImageView: some View {
@@ -185,7 +186,7 @@ extension CreateRecipeView {
                 .frame(maxWidth: .infinity)
                 .frame(height: 170)
             
-        }
+        }.padding(.horizontal,inputRootPading)
     }
 
     var ingredients: some View {
@@ -199,15 +200,15 @@ extension CreateRecipeView {
                           .foregroundColor(.gray)
             )
             .foregroundStyle(.black)
-            .frame(height: 20)
-            .padding()
+            .padding( 15)
 
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
-                    .shadow(color: Color.gray, radius: 2, x: 1, y: 1)
+                    .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
             )
-        }
+        
+        }.padding(.horizontal,inputRootPading)
     }
 
     var durationTime: some View {
@@ -222,13 +223,18 @@ extension CreateRecipeView {
                     .tint(.gray)
                     .fontWeight(.bold)
     
-        .frame(height: 15)
-        .frame(maxWidth: .infinity)
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-                .shadow(color: .merun, radius: 2, x: 1, y: 2)
-        )
-    }
+                    .foregroundStyle(.black)
+                    .padding( 10)
+
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.white)
+                            .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
+                    )
+        
+      
+                .padding(.horizontal,inputRootPading)
+            }
+    
+    
 }

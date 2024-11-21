@@ -16,25 +16,25 @@ struct RichTextFormView: View {
         HStack/*(alignment: .center)*/ {
             HStack {
                 Text(text.length == 0 ? placeHolder.toAttributedTextForPlaceHolder() : AttributedString(text))
-                    .font(.caption)
+                    .font(.subheadline)
                     .foregroundColor(text.length == 0 ? Color.gray : Color.white)
 
-                Spacer()
-            }.padding(.leading)
+                //Spacer()
+            }//.padding(.trailing, 50)
+            Spacer()
             Image(systemName: "square.and.pencil")
         }
        
         .frame(maxWidth: .infinity, alignment: .top)
        // .modifier(DefaultRoundedRectangleOverlay(cornerRadius: 10))
-        .padding()
-        .padding()
-       
+       // .padding()
+        .padding(30)
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
-                .shadow(color: Color.gray, radius: 2, x: -1, y: 2)
-                
+                .shadow(color: Color.gray.opacity(0.5), radius: 2, x: 0, y: 0.5)
         )
+
         .onTapGesture {
             showSheet = true
         }

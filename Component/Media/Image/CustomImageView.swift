@@ -35,6 +35,7 @@ struct CustomImageView: View {
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
                    // .frame(width: size.height, height: size.height)
+                   
                     .clipped()
                     
             } else {
